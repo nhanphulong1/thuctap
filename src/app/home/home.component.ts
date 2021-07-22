@@ -3,6 +3,7 @@ import { FormGroup, FormGroupDirective, NgForm, FormBuilder, FormControl, Valida
 import {ErrorStateMatcher} from '@angular/material/core';
 
 import * as moment from 'moment';
+import { BussinessHouseholdService } from '../Service/bussiness-household.service';
 
 @Component({
   selector: 'app-home',
@@ -15,7 +16,10 @@ export class HomeComponent implements OnInit{
 
   formSignUp: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private businessService: BussinessHouseholdService,
+  ) {
   }
 
   ngOnInit(): void {
@@ -34,9 +38,53 @@ export class HomeComponent implements OnInit{
   }
   
   nowDate = moment(new Date()).format('YYYY-MM-DD');
+
+  public getData(){
+    return {
+      'name': this.formSignUp.value.name,
+      'address': this.formSignUp.value.address+' - '+this.formSignUp.value.ward+' - '+this.formSignUp.value.province,
+      'certificationNumber':'00000001',
+      'status': 0,
+      'phoneNumber': this.formSignUp.value.phone,
+      // 'email':'',
+      // 'fax':'',
+      // 'website':'',
+      'countWorker': this.formSignUp.value.countWorker,
+      'representative':{
+        'name': this.formSignUp.value.submitName,
+        'phoneNumber': this.formSignUp.value.phone,
+        'address': this.formSignUp.value.address+' - '+this.formSignUp.value.ward+' - '+this.formSignUp.value.province,
+        'email':'',
+        'identityCard':{
+          'id': this.formSignUp.value.submitId,
+          'national': 'Việt Nam',
+          'gender':0,
+          'folk':'Kinh',
+          'resident': this.formSignUp.value.address+' - '+this.formSignUp.value.ward+' - '+this.formSignUp.value.province
+        }
+      },
+      'transactions':[{
+        'name':'Thành lập mới',
+        'status': 0,
+        'receptionDate': this.formSignUp.value.receptDate,
+        'receptionPerson': this.formSignUp.value.receptPerson,
+        'submitPerson': this.formSignUp.value.submitName,
+        'submitPhone': this.formSignUp.value.phone,
+        'submitId': this.formSignUp.value.submitId
+      }],
+      'createdDate': this.nowDate,
+      'updatedDate': this.nowDate
+    };
+  }
   
   onSubmit(){
-    console.log(this.formSignUp.get('phone'));
+    if(!this.formSignUp.invalid){
+      let data = this.getData();
+      this.businessService.postBussinessHouse(data).subscribe((data) => {
+        console.log(data);
+      })
+    }
+    
   }
 
   matcher = new MyErrorStateMatcher();
