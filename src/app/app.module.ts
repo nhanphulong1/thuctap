@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
@@ -20,6 +21,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AddHousehouldComponent } from './form/add-househould/add-househould.component';
 import { AddReceiptComponent } from './form/add-receipt/add-receipt.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +37,7 @@ import { AddReceiptComponent } from './form/add-receipt/add-receipt.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MatDividerModule,
     MatIconModule,
