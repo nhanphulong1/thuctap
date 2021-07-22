@@ -1,0 +1,35 @@
+<nav class="sidenav">
+    <div class="logo py-4">
+        <img src="../../assets/img/logo_vnpt.png" alt="logo VPPT">VNPT
+    </div>
+    <h2 id="ctName">hệ thống quản lý cấp phép hộ kinh doanh</h2>
+    <ul>
+        <li>
+            <a (click)="showCate = !showCate"><mat-icon>list_alt</mat-icon>Danh mục<mat-icon class="{{ showCate ? 'expand  expand_active': 'expand' }}">expand_more</mat-icon></a>
+            <ul *ngIf="showCate">
+                <li><a href=""><mat-icon>view_list</mat-icon>Danh sách hộ kinh doanh</a></li>
+            </ul>
+            
+        </li>
+        <li>
+            <a (click)="showList = !showList"><mat-icon>folder</mat-icon>Danh mục hồ sơ<mat-icon class="{{ showList ? 'expand  expand_active': 'expand' }}">expand_more</mat-icon></a>
+            <ul *ngIf="showList">
+                <li><a href=""><mat-icon>create_new_folder</mat-icon>Danh sách hồ sơ đang xử lý</a></li>
+                <li><a href=""><mat-icon>folder_shared</mat-icon>Danh sách hồ sơ đang hoạt động</a></li>
+                <li><a href=""><mat-icon>folder_special</mat-icon>Danh sách hồ sơ bị thu hồi giấy phép</a></li>
+                <li><a href=""><mat-icon>rule_folder</mat-icon>Danh sách hồ sơ bị giải thể</a></li>
+                <li><a href=""><mat-icon>snippet_folder</mat-icon>Danh sách hồ sơ tạm ngưng kinh doanh</a></li>
+            </ul>
+        </li>
+        <li>
+            <a (click)="showReport = !showReport"><mat-icon>dashboard</mat-icon>Thống kê báo cáo<mat-icon class="{{ showReport ? 'expand  expand_active': 'expand' }}">expand_more</mat-icon></a>
+            <ul *ngIf="showReport">
+                <li><a href=""><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh thành lập mới</a></li>
+                <li><a href=""><mat-icon>view_list</mat-icon>Thống kê hộ có vốn lớn nhất năm</a></li>
+                <li><a href=""><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh đăng ký thay đổi</a></li>
+                <li><a href=""><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh theo ngành nghề</a></li>
+                <li><a href=""><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh theo loại giao dịch</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>

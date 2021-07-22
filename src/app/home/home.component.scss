@@ -1,0 +1,97 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+mat-icon{
+    font-family: 'Material Icons';
+}
+
+.content{
+    background-color: white;
+    border: 1px solid rgba(211, 211, 211, 0.247);
+    margin: 15px;
+    position: relative;
+    padding: 10px 8px;
+}
+
+.content h2{
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.content .back{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: 1px solid black;
+    padding: 6px 8px;
+    font-size: 15px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.content .back mat-icon{
+    font-size: 18px;
+    height: 18px;
+    width: 23px;
+}
+
+.content .formRow mat-grid-list mat-grid-tile{
+    font-size: 10px;
+}
+
+.content form h4{
+    font-size: 13px;
+    font-weight: 600;
+    padding-left: 15px;
+    margin-top: 7px;
+    margin-bottom: 2px;
+}
+
+.formRow{
+    margin: 0 45px;
+}
+
+.formRow mat-form-field{
+    width: 95%;
+}
+
+.listRight > ::ng-deep figure {
+    justify-content: flex-start !important;
+}
+
+.listLeft > ::ng-deep figure {
+    justify-content: flex-end !important;
+}
+
+
+.btnAdd{
+    text-align: center;
+}
+
+.btnAdd button{
+    font-size: 12px;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+}
+
+.btnAdd button mat-icon{
+    font-size: 17px;
+    height: 17px;
+}
+
+.btnAdd .btnSubmit{
+    padding: 0px 35px;
+    margin-right: 10px;
+    background-color: #1565C0;
+}
+
+.btnAdd .btnReset{
+    padding: 0px 20px;
+    background-color: #AAAAAA;
+}
