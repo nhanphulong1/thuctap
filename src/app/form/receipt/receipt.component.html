@@ -1,0 +1,176 @@
+<div class="content">
+    <h2>THÊM GIẤY BIÊN NHẬN HỒ SƠ</h2>
+    <a routerLink="/home" routerLinkActive="router-link-active"  class="back"><mat-icon>arrow_back</mat-icon>Quay lại</a>
+    <!-- <form (ngSubmit)="onSubmit()" [formGroup]="formSignUp"> -->
+    <form (ngSubmit)="onSubmit()" [formGroup]="formReceipt">
+        <div class="formRow">
+            <mat-grid-list cols='2' rowHeight='55px'>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Số biên nhận</mat-label>
+                        <input type="text" matInput formControlName="receiptNumber">
+                        <mat-error *ngIf="formReceipt.get('receiptNumber').hasError('required')">Vui lòng nhập số biên nhận</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile></mat-grid-tile>
+
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ngày tiếp nhận</mat-label>
+                        <input type="date" matInput formControlName="receiptDate">
+                        <mat-error *ngIf="formReceipt.get('receiptDate').hasError('required')">Vui lòng nhập ngày tiếp nhận</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Hồ sơ số</mat-label>
+                        <input type="text" matInput formControlName="profileNumber">
+                        <mat-error *ngIf="formReceipt.get('profileNumber').hasError('required')">Vui lòng nhập số hồ sơ</mat-error>
+                        <mat-error *ngIf="!formReceipt.get('profileNumber').hasError('required') && formReceipt.get('profileNumber').hasError('pattern')">Vui lòng chỉ nhập số</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile colspan='2'>
+                    <mat-form-field appearance="outline" style="width: 100%">
+                        <mat-label>Người nộp hồ sơ</mat-label>
+                        <input type="text" matInput formControlName="submitPerson">
+                        <mat-error *ngIf="formReceipt.get('submitPerson').hasError('required')">Vui lòng nhập tên người nộp</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Loại giấy tờ</mat-label>
+                        <input type="text" matInput formControlName="receiptType">
+                        <!-- <mat-icon matSuffix>arrow_drop_down</mat-icon> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Số chứng thực</mat-label>
+                        <input type="text" matInput formControlName="attestNumber">
+                        <!-- <mat-error *ngIf="formSignUp.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+                
+                <mat-grid-tile colspan='2'>
+                    <mat-form-field appearance="outline" style="width: 100%">
+                        <mat-label>Địa chỉ</mat-label>
+                        <input type="text" matInput formControlName="address">
+                        <!-- <mat-error *ngIf="formSignUp.get('ward').hasError('required')">Vui lòng nhập vị trí!</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols='4' rowHeight='55px'>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Số điện thoại</mat-label>
+                        <input type="text" matInput formControlName="phone">
+                        <!-- <mat-error *ngIf="formSignUp.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field appearance="outline">
+                        <mat-label>FAX</mat-label>
+                        <input type="text" matInput formControlName="fax">
+                        <!-- <mat-error *ngIf="formSignUp.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="text" matInput formControlName="email">
+                        <!-- <mat-error *ngIf="formSignUp.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Website</mat-label>
+                        <input type="text" matInput formControlName="website">
+                        <!-- <mat-error *ngIf="formSignUp.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols='2' rowHeight='55px'>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Chức danh</mat-label>
+                        <input type="text" matInput formControlName="titles">
+                        <!-- <mat-icon matSuffix>arrow_drop_down</mat-icon> -->
+                        <mat-error *ngIf="formReceipt.get('titles').hasError('required')">Vui lòng nhập chức danh</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Về việc</mat-label>
+                        <input type="text" matInput formControlName="content">
+                        <mat-error *ngIf="formReceipt.get('content').hasError('required')">Vui lòng nhập nội dung</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols='1' rowHeight='97px'>
+                <mat-grid-tile>
+                    <mat-form-field appearance="outline" style="width: 100%">
+                        <mat-label>Các giấy tờ gồm</mat-label>
+                        <textarea matInput rows="5" formControlName="listProfile"></textarea>
+                        <mat-error *ngIf="formReceipt.get('listProfile').hasError('required')">Vui lòng nhập các loại giấy tờ</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols='2' rowHeight='55px'>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ngày giải quyết</mat-label>
+                        <input type="date" matInput formControlName="setlementDate">
+                        <mat-error *ngIf="formReceipt.get('setlementDate').hasError('required')">Vui lòng nhập ngày giải quyết</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Người tiếp nhận</mat-label>
+                        <input type="text" matInput formControlName="receiptPerson">
+                        <mat-error *ngIf="formReceipt.get('receiptPerson').hasError('required')">Vui lòng nhập tên người tiếp nhận</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Đơn vị cấp</mat-label>
+                        <mat-select required matInput formControlName="issueUnit">
+                            <mat-option value="UBND TP Sơn La">UBND TP Sơn La</mat-option>
+                            <mat-option value="Ủy Ban Nhân Dân">UỶ BAN NHÂN DÂN</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formReceipt.get('issueUnit').hasError('required')">Vui lòng chọn đơn vị cấp</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Phòng ban</mat-label>
+                        <mat-select required matInput formControlName="department">
+                            <mat-option value="TP Sơn La">TP Sơn La</mat-option>
+                            <mat-option value="Phòng tài chính - kế hoạch">Phòng tài chính - kế hoạch</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formReceipt.get('department').hasError('required')">Vui lòng chọn phòng ban</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+        <div class="btnAdd">
+            <button mat-raised-button color="primary" class="btnSubmit"><mat-icon>save</mat-icon> Lưu</button>
+            <button type="reset" mat-raised-button color="secondary" class="btnReset"><mat-icon>restart_alt</mat-icon> Làm mới</button>
+        </div>
+    </form>
+</div>

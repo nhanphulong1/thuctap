@@ -43,10 +43,24 @@ export class BussinessHouseholdService {
     .pipe(catchError(this.handleError));
   }
 
+  public getBussinessHouseById(data): Observable<any>{
+    const url = this.REST_API_SERVER+'/id/'+data;
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
   public postBussinessHouse(data): Observable<any>{
     const url = this.REST_API_SERVER+'/';
     return this.httpClient
     .post<any>(url, data ,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+  public putBussinessHouse(data,id): Observable<any>{
+    const url = this.REST_API_SERVER+'/'+id;
+    return this.httpClient
+    .put<any>(url, data ,this.httpOptions)
     .pipe(catchError(this.handleError));
   }
 }
