@@ -16,6 +16,8 @@ export class HomeComponent implements OnInit{
 
   formSignUp: FormGroup;
 
+  nowDate = moment(new Date()).format('YYYY-MM-DD');
+
   constructor(
     private fb: FormBuilder,
     private businessService: BussinessHouseholdService,
@@ -37,7 +39,7 @@ export class HomeComponent implements OnInit{
     });
   }
   
-  nowDate = moment(new Date()).format('YYYY-MM-DD');
+  
 
   public getData(){
     return {
