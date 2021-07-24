@@ -53,6 +53,7 @@ export class ReceiptComponent implements OnInit {
     if(this.index >= 0){
       this.service.getBussinessHouseById(this.id).subscribe((d)=>{
         this.data = d;
+        console.log(this.data);
         this.setValueReceiptForm();
       });
     }
@@ -72,7 +73,7 @@ export class ReceiptComponent implements OnInit {
 
   public getValueReceiptForm(){
     let listProfiles = this.formReceipt.value.listProfile.split('\n');
-    this.data.transactions[this.index].receipt= {
+    this.data.transactions[2].receipt= {
       'id': this.formReceipt.value.receiptNumber,
       'content': this.formReceipt.value.content,
       'listProfile': listProfiles,
@@ -95,7 +96,6 @@ export class ReceiptComponent implements OnInit {
   public onSubmit(){
     if(this.formReceipt.valid){
       this.getValueReceiptForm();
-      console.log(this.data);
       this.service.putBussinessHouse(this.data,this.id).subscribe((dt)=>{
         console.log(dt);
       });

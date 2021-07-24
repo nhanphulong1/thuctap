@@ -1,0 +1,141 @@
+<div class="content">
+    <h2>THÊM CHỨNG CHỈ HÀNH NGHỀ</h2>
+    <a routerLink="/home" routerLinkActive="router-link-active"  class="back"><mat-icon>arrow_back</mat-icon>Quay lại</a>
+
+    <form (ngSubmit)="onSubmit()" [formGroup]="formCertificate">
+        <div class="formRow">
+            <mat-grid-list cols='2' rowHeight='55px'>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Họ và tên</mat-label>
+                        <input type="text" matInput formControlName="name">
+                        <mat-error *ngIf="formCertificate.get('name').hasError('required')">Vui lòng nhập họ tên</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ngày sinh</mat-label>
+                        <input type="date" matInput formControlName="birthday">
+                        <mat-error *ngIf="formCertificate.get('birthday').hasError('required')">Vui lòng nhập ngày sinh</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile colspan='2'>
+                    <mat-form-field appearance="outline" style="width: 100%">
+                        <mat-label>Địa chỉ</mat-label>
+                        <input type="text" matInput formControlName="address">
+                        <mat-error *ngIf="formCertificate.get('address').hasError('required')">Vui lòng nhập địa chỉ</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline" style="width: 40%">
+                        <mat-label>Trình độ</mat-label>
+                        <mat-select required matInput formControlName="level">
+                            <mat-option value="0">THPT</mat-option>
+                            <mat-option value="1">Trung cấp</mat-option>
+                            <mat-option value="2">Cao đẳng</mat-option>
+                            <mat-option value="3">Đại học</mat-option>
+                            <mat-option value="4">Trên đại học</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formCertificate.get('level').hasError('required')">Vui lòng chọn trình độ học vấn</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile></mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols='1' rowHeight='97px'>
+                <mat-grid-tile>
+                    <mat-form-field appearance="outline" style="width: 100%">
+                        <mat-label>Được hành nghề</mat-label>
+                        <textarea matInput rows="5" formControlName="career"></textarea>
+                        <mat-error *ngIf="formCertificate.get('career').hasError('required')">Vui lòng nhập các loại ngành nghề</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols='2' rowHeight='55px'>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Số CMND/Hộ chiếu</mat-label>
+                        <input type="text" matInput formControlName="identityId">
+                        <mat-error *ngIf="formCertificate.get('identityId').hasError('required')">Vui lòng nhập số CMND</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ngày cấp CMND</mat-label>
+                        <input type="date" matInput formControlName="identityDate">
+                        <mat-error *ngIf="formCertificate.get('identityDate').hasError('required')">Vui lòng nhập ngày cấp CMND</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline" style="width: 40%">
+                        <mat-label>Quốc tịch</mat-label>
+                        <input type="text" matInput formControlName="national">
+                        <mat-error *ngIf="formCertificate.get('national').hasError('required')">Vui lòng nhập quốc tịch</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile></mat-grid-tile>
+
+
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Từ ngày</mat-label>
+                        <input type="date" matInput formControlName="startDate">
+                        <!-- <mat-error *ngIf="formCertificate.get('startDate').hasError('required')">Vui lòng chọn đơn vị cấp</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Đến ngày</mat-label>
+                        <input type="date" matInput formControlName="endDate">
+                        <!-- <mat-error *ngIf="formCertificate.get('endDate').hasError('required')">Vui lòng chọn phòng ban</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Nơi cấp chứng chỉ</mat-label>
+                        <input type="text" matInput formControlName="issuePlace">
+                        <mat-error *ngIf="formCertificate.get('issuePlace').hasError('required')">Vui lòng nhập nơi cấp chứng chỉ</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ngày cấp chứng chỉ</mat-label>
+                        <input type="date" matInput formControlName="issueDate">
+                        <mat-error *ngIf="formCertificate.get('issueDate').hasError('required')">Vui lòng nhập ngày cấp</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Người ký</mat-label>
+                        <input type="text" matInput formControlName="singer">
+                        <mat-error *ngIf="formCertificate.get('singer').hasError('required')">Vui lòng người ký tên</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Chức vụ</mat-label>
+                        <input type="text" matInput formControlName="position">
+                        <mat-error *ngIf="formCertificate.get('position').hasError('required')">Vui lòng nhập chức vụ người ký</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+        <div class="btnAdd">
+            <button mat-raised-button color="primary" class="btnSubmit"><mat-icon>save</mat-icon> Lưu</button>
+            <button type="reset" mat-raised-button color="secondary" class="btnReset"><mat-icon>restart_alt</mat-icon> Làm mới</button>
+        </div>
+    </form>
+</div>
