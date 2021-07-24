@@ -22,6 +22,7 @@ import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddHousehouldComponent } from './form/add-househould/add-househould.component';
 import { ReceiptComponent } from './form/receipt/receipt.component';
+import { BussinessCertificateComponent } from './form/bussiness-certificate/bussiness-certificate.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { ReceiptComponent } from './form/receipt/receipt.component';
     HomeComponent,
     FooterComponent,
     AddHousehouldComponent,
-    ReceiptComponent
+    ReceiptComponent,
+    BussinessCertificateComponent
   ],
   imports: [
     BrowserModule,
