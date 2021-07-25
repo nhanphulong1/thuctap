@@ -1,9 +1,13 @@
+.footer{
+    background-color: #F8FAFD;
+}
+
 .footer1{
     padding: 3px 20px 10px;
     position: fixed;
     margin-left: -10px;
     bottom: -10px;
-    width: 100%;
+    width: 80%;
     background-color: #FFFFFF;
     color: black;
     text-align: left;
@@ -12,6 +16,10 @@
 
 .icon{
     font-size: 15px;
+}
+
+.spacer {
+    flex: 1 1 auto;
 }
 
 .footer2{

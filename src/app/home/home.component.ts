@@ -79,14 +79,54 @@ export class HomeComponent implements OnInit{
     };
   }
   
+  public getData(){
+    return {
+      'name': this.formSignUp.value.name,
+      'address': this.formSignUp.value.address+' - '+this.formSignUp.value.ward+' - '+this.formSignUp.value.province,
+      'certificationNumber':'00000001',
+      'status': 1,
+      'phoneNumber': this.formSignUp.value.phone,
+      // 'email':'',
+      // 'fax':'',
+      // 'website':'',
+      'countWorker': this.formSignUp.value.countWorker,
+      'representative':{
+        'name': this.formSignUp.value.submitName,
+        'phoneNumber': this.formSignUp.value.phone,
+        'address': this.formSignUp.value.address+' - '+this.formSignUp.value.ward+' - '+this.formSignUp.value.province,
+        'email':'',
+        'identityCard':{
+          'id': this.formSignUp.value.submitId,
+          'national': 'Việt Nam',
+          'gender':0,
+          'folk':'Kinh',
+          'resident': this.formSignUp.value.address+' - '+this.formSignUp.value.ward+' - '+this.formSignUp.value.province
+        }
+      },
+      'transactions':[{
+        'name':'Thành lập mới',
+        'status': 0,
+        'receptionDate': this.formSignUp.value.receptDate,
+        'receptionPerson': this.formSignUp.value.receptPerson,
+        'submitPerson': this.formSignUp.value.submitName,
+        'submitPhone': this.formSignUp.value.phone,
+        'submitId': this.formSignUp.value.submitId
+      }],
+      'createdDate': this.nowDate,
+      'updatedDate': this.nowDate
+    };
+  }
+
+
   onSubmit(){
     if(!this.formSignUp.invalid){
       let data = this.getData();
       this.businessService.postBussinessHouse(data).subscribe((data) => {
         console.log(data);
+        //Chuyển trang
       })
     }
-    
+
   }
 
   matcher = new MyErrorStateMatcher();

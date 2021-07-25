@@ -1,0 +1,187 @@
+<div class="content">
+    <h2>DANH SÁCH HỘ KINH DOANH</h2>
+    <button mat-icon-button class="add-household">
+        <a href="/home">
+            <mat-icon class="icon">add_circle_outline</mat-icon>
+            <mat-label>Thêm mới</mat-label>
+        </a>
+    </button>
+    <form (ngSubmit)="onSearch()" [formGroup]="formListHouse">
+        <div class="status">
+            <h5>
+                Trạng thái xử lý:
+                <mat-radio-group [(ngModel)]="radioChoice" aria-label="choicesRadioGroup">
+                    <mat-radio-button *ngFor="let choice of choices; let i = index" [value]="i-1" (click)="clickChoice(i-1)">
+                        {{choice}}
+                    </mat-radio-button>
+                    <!-- <mat-error *ngIf="formListHouse.get('radioChoice').hasError('required')">Vui lòng chọn trạng thái xử lý!</mat-error> -->
+                    <!-- <mat-radio-button name="radio-table" data-ng-model="dataSource.status" value="1" checked="true">Tất cả</mat-radio-button>
+                    <mat-radio-button name="radio-table" data-ng-model="dataSource.status" value="2">Chờ xử lý</mat-radio-button>
+                    <mat-radio-button name="radio-table" data-ng-model="dataSource.status" value="3">Đang hoạt động</mat-radio-button> -->
+                </mat-radio-group>
+            </h5>
+        </div>
+        <div>
+            <mat-form-field appearance="outline">
+                <mat-label>Tên hộ kinh doanh</mat-label>
+                <input type="text" matInput placeholder="Nhập tên hộ kinh doanh" formControlName="name">
+                <mat-error *ngIf="formListHouse.get('name').hasError('required')">Vui lòng điền tên hộ kinh doanh!</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Số đăng ký kinh doanh</mat-label>
+                <input type="text" matInput placeholder="Nhập số đăng ký hộ kinh doanh" formControlName="certificationNumber">
+                <mat-error *ngIf="formListHouse.get('certificationNumber').hasError('required')">Vui lòng điền số ĐKKD!</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col">
+                <mat-label>Ngày cấp</mat-label>
+                <input type="date" matInput formControlName="createdDate">
+                <mat-error *ngIf="formListHouse.get('createdDate').hasError('required')">Vui lòng chọn ngày!</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col">
+                <mat-label>Trạng thái hồ sơ</mat-label>
+                <mat-select formControlName="status">
+                    <mat-option value="-1">Tất cả</mat-option>
+                    <mat-option value="0">Chờ xử lý</mat-option>
+                    <mat-option value="1">Đang hoạt động</mat-option>
+                    <!-- <mat-option value="-1">Tất cả</mat-option>
+                    <mat-option value="0">Đang xin giấy phép</mat-option>
+                    <mat-option value="1">Đang hoạt động</mat-option>
+                    <mat-option value="2">Tạm ngưng kinh doanh</mat-option>
+                    <mat-option value="3">Đã thu hồi</mat-option>
+                    <mat-option value="4">Bị giải thể</mat-option> -->
+                </mat-select>
+                <!-- <mat-error *ngIf="formListHouse.get('status').hasError('required')">Vui lòng chọn trạng thái!</mat-error> -->
+            </mat-form-field>
+            <button mat-icon-button class="searchbar">
+                Tìm kiếm
+                <mat-icon class="icon">search</mat-icon>
+            </button>
+        </div>
+    </form>
+    <!-- <a href="">Tìm kiếm chi tiết</a><mat-icon class="{{ showCate ? 'expand  expand_active': 'expand' }}">expand_more</mat-icon> -->
+    <span  class="search">
+        <h5>Tìm kiếm chi tiết<a href="/list/businesshousehold"><mat-icon class="icon">expand_more</mat-icon></a></h5>
+    </span>
+    <!-- <span>{{ households[0]|json }}</span> -->
+    <!-- <div class="mat-elevation-z8">
+        <table>
+            
+            <tr>
+                <th> STT </th>
+                <th> Tên hộ kinh doanh </th>
+                <th> Số ĐKKD </th>
+                <th> Ngày cấp </th>
+                <th> Địa chỉ </th>
+                <th> Trạng thái </th>
+                <th> Thao tác </th>
+            </tr>
+
+            <tr *ngFor="let element of households">
+                <td> {{1}} </td>
+                <td> {{element?.name}} </td>
+                <td> {{element?.certificationNumber}} </td>
+                <td> {{element?.createdDate | date : 'dd/MM/yyyy'}} </td>
+                <td> {{element?.address}} </td>
+                <td *ngIf="true"><mat-card class="card"> Dự thảo </mat-card></td>
+                <td> 
+                    <button mat-button [matMenuTriggerFor]="menu" #menuTrigger>
+                        <mat-icon>more_horiz</mat-icon>
+                        <mat-menu #menu="matMenu">
+                            <button mat-menu-item><mat-icon color="primary">remove_red_eye</mat-icon>Xem chi tiết</button>
+                            <button mat-menu-item><mat-icon color="primary">update</mat-icon>Thay đổi</button>
+                            <button mat-menu-item><mat-icon color="primary">restore</mat-icon>Xin cấp lại</button>
+                            <button mat-menu-item><mat-icon color="primary">pause_presentation</mat-icon>Xin tạm dừng</button>
+                            <button mat-menu-item><mat-icon color="primary">shuffle</mat-icon>Thu hồi</button>
+                            <button mat-menu-item><mat-icon color="primary">delete_outline</mat-icon>Giải thể</button>
+                        </mat-menu>
+                    </button>
+                </td>
+            </tr>
+        </table> -->
+        <!-- <span class= "row-below-table">
+            Số dòng
+            <input type="number" style="width:30px" value="2" min="1">1-5 của 1
+            <mat-icon class="icon">first_page</mat-icon>
+            <mat-icon class="icon">chevron_left</mat-icon>
+            <mat-icon class="icon">chevron_right</mat-icon>
+            <mat-icon class="icon">last_page</mat-icon>
+        </span> -->
+        <!-- <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div> -->
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+    
+          <!-- Position Column -->
+          <ng-container matColumnDef="position">
+            <th mat-header-cell *matHeaderCellDef> STT </th>
+            <td mat-cell *matCellDef="let myRowData; columns: columnsToDisplay; let i = index"> {{i+1}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef> Tên hộ kinh doanh  </th>
+            <td mat-cell *matCellDef="let element"> {{element?.name}} </td>
+          </ng-container>
+      
+          <!-- Number Column -->
+          <ng-container matColumnDef="number">
+            <th mat-header-cell *matHeaderCellDef> Số ĐKKD </th>
+            <td mat-cell *matCellDef="let element"> {{element?.certificationNumber}} </td>
+          </ng-container>
+        
+          <!-- Date Column -->
+          <ng-container matColumnDef="date">
+            <th mat-header-cell *matHeaderCellDef> Ngày cấp </th>
+            <td mat-cell *matCellDef="let element"> {{element?.createdDate | date : 'dd/MM/yyyy'}} </td>
+          </ng-container>
+
+          <!-- Address Column -->
+          <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef> Địa chỉ </th>
+            <td mat-cell *matCellDef="let element"> {{element?.address}} </td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Trạng thái </th>
+            <td mat-cell *matCellDef="let element">
+                <mat-card id="card_0" *ngIf="element.status==0">
+                    <mat-label> Dự thảo </mat-label>
+                </mat-card>
+                <mat-card id="card_1" *ngIf="element.status==1">
+                    <mat-label> Đã xử lý </mat-label>
+                </mat-card>
+            </td>
+          </ng-container>
+
+          <!-- Manipulation Column -->
+          <ng-container matColumnDef="manipulation">
+            <th mat-header-cell *matHeaderCellDef> Thao tác </th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-button [matMenuTriggerFor]="menu" #menuTrigger>
+                    <mat-icon>more_horiz</mat-icon>
+                    <mat-menu #menu="matMenu">
+                        <a href="/" class="menu-a"><button mat-menu-item><mat-icon color="primary">remove_red_eye</mat-icon>Xem chi tiết</button></a>
+                        <a href="/" class="menu-a"><button mat-menu-item><mat-icon color="primary">update</mat-icon>Thay đổi</button></a>
+                        <a href="/" class="menu-a"><button mat-menu-item><mat-icon color="primary">restore</mat-icon>Xin cấp lại</button></a>
+                        <a href="/" class="menu-a"><button mat-menu-item><mat-icon color="primary">pause_presentation</mat-icon>Xin tạm dừng</button></a>
+                        <a href="/" class="menu-a"><button mat-menu-item><mat-icon color="primary">shuffle</mat-icon>Thu hồi</button></a>
+                        <a href="/" class="menu-a"><button mat-menu-item><mat-icon color="primary">delete_outline</mat-icon>Giải thể</button></a>
+                    </mat-menu>
+                </button>
+            </td>
+          </ng-container>
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+          <!-- Row shown when there is no matching data. -->
+          <tr mat-row *matNoDataRow>
+            <td mat-cell colspan="7">Không tìm thấy dữ liệu!!"</td>
+          </tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[5, 10, 15, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+    <br/>
+</div>

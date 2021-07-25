@@ -10,7 +10,10 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 
 
 export class BussinessHouseholdService {
-  private REST_API_SERVER = 'http://localhost:8080/businesshouse';
+
+  private REST_API_SERVER = 'http://localhost:8081/businesshouse'
+
+
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -43,12 +46,6 @@ export class BussinessHouseholdService {
     .pipe(catchError(this.handleError));
   }
 
-  public getBussinessHouseById(data): Observable<any>{
-    const url = this.REST_API_SERVER+'/id/'+data;
-    return this.httpClient
-    .get<any>(url,this.httpOptions)
-    .pipe(catchError(this.handleError));
-  }
 
   public postBussinessHouse(data): Observable<any>{
     const url = this.REST_API_SERVER+'/';
@@ -57,10 +54,58 @@ export class BussinessHouseholdService {
     .pipe(catchError(this.handleError));
   }
 
+  public getForm(name, certificationNumber, createdDate, status): Observable<any>{
+    const url = this.REST_API_SERVER+'/search/'+name+'&'+certificationNumber+'&'+createdDate+'&'+status;
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+  public getForms(name, certificationNumber, createdDate): Observable<any>{
+    const url = this.REST_API_SERVER+'/search_/'+name+'&'+certificationNumber+'&'+createdDate;
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+  public getNameBusinessHouseholds(data): Observable<any>{
+    const url = this.REST_API_SERVER+'/search_name/'+data;
+
+  public getBussinessHouseById(data): Observable<any>{
+    const url = this.REST_API_SERVER+'/id/'+data;
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+
+  public getCertificationNumber(data): Observable<any>{
+    const url = this.REST_API_SERVER+'/search_number/'+data;
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+  public getCreatedDate(data): Observable<any>{
+    const url = this.REST_API_SERVER+'/search_date/'+data;
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+  public getStatus(data): Observable<any>{
+    const url = this.REST_API_SERVER+'/search_status/'+data;
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+}
+
+
   public putBussinessHouse(data,id): Observable<any>{
     const url = this.REST_API_SERVER+'/'+id;
     return this.httpClient
     .put<any>(url, data ,this.httpOptions)
     .pipe(catchError(this.handleError));
   }
-}
+
