@@ -10,7 +10,7 @@
         <div class="status">
             <h5>
                 Trạng thái xử lý:
-                <mat-radio-group [(ngModel)]="radioChoice" aria-label="choicesRadioGroup">
+                <mat-radio-group (ngModel)="radioChoice" aria-label="choicesRadioGroup">
                     <mat-radio-button *ngFor="let choice of choices; let i = index" [value]="i-1" (click)="clickChoice(i-1)">
                         {{choice}}
                     </mat-radio-button>
@@ -40,15 +40,15 @@
             <mat-form-field appearance="outline" class="col">
                 <mat-label>Trạng thái hồ sơ</mat-label>
                 <mat-select formControlName="status">
-                    <mat-option value="-1">Tất cả</mat-option>
-                    <mat-option value="0">Chờ xử lý</mat-option>
-                    <mat-option value="1">Đang hoạt động</mat-option>
                     <!-- <mat-option value="-1">Tất cả</mat-option>
+                    <mat-option value="0">Chờ xử lý</mat-option>
+                    <mat-option value="1">Đang hoạt động</mat-option> -->
+                    <mat-option value="-1">Tất cả</mat-option>
                     <mat-option value="0">Đang xin giấy phép</mat-option>
                     <mat-option value="1">Đang hoạt động</mat-option>
                     <mat-option value="2">Tạm ngưng kinh doanh</mat-option>
                     <mat-option value="3">Đã thu hồi</mat-option>
-                    <mat-option value="4">Bị giải thể</mat-option> -->
+                    <mat-option value="4">Bị giải thể</mat-option>
                 </mat-select>
                 <!-- <mat-error *ngIf="formListHouse.get('status').hasError('required')">Vui lòng chọn trạng thái!</mat-error> -->
             </mat-form-field>
@@ -143,13 +143,22 @@
 
           <!-- Status Column -->
           <ng-container matColumnDef="status">
-            <th mat-header-cell *matHeaderCellDef mat-sort-header> Trạng thái </th>
+            <th mat-header-cell *matHeaderCellDef mat-sort-header id="stt"> Trạng thái </th>
             <td mat-cell *matCellDef="let element">
                 <mat-card id="card_0" *ngIf="element.status==0">
-                    <mat-label> Dự thảo </mat-label>
+                    <mat-label> Đang xin giấy phép </mat-label>
                 </mat-card>
                 <mat-card id="card_1" *ngIf="element.status==1">
-                    <mat-label> Đã xử lý </mat-label>
+                    <mat-label> Đang hoạt động </mat-label>
+                </mat-card>
+                <mat-card id="card_2" *ngIf="element.status==2">
+                    <mat-label> Tạm ngưng kinh doanh </mat-label>
+                </mat-card>
+                <mat-card id="card_3" *ngIf="element.status==3">
+                    <mat-label> Đã thu hồi </mat-label>
+                </mat-card>
+                <mat-card id="card_4" *ngIf="element.status==4">
+                    <mat-label> Bị giải thể </mat-label>
                 </mat-card>
             </td>
           </ng-container>
