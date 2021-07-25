@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common'
+
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
@@ -20,6 +22,8 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
+import {MatSelectModule} from '@angular/material/select';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,8 +33,10 @@ import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { FooterComponent } from './footer/footer.component';
 import { AddHousehouldComponent } from './form/add-househould/add-househould.component';
-import { AddReceiptComponent } from './form/add-receipt/add-receipt.component';
 import { BusinesshouseholdComponent } from './list/businesshousehold/businesshousehold.component';
+import { ReceiptComponent } from './form/receipt/receipt.component';
+import { BussinessCertificateComponent } from './form/bussiness-certificate/bussiness-certificate.component';
+
 
 @NgModule({
   declarations: [
@@ -40,8 +46,9 @@ import { BusinesshouseholdComponent } from './list/businesshousehold/businesshou
     HomeComponent,
     FooterComponent,
     AddHousehouldComponent,
-    AddReceiptComponent,
     BusinesshouseholdComponent
+    ReceiptComponent,
+    BussinessCertificateComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +56,7 @@ import { BusinesshouseholdComponent } from './list/businesshousehold/businesshou
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CommonModule,
     BrowserAnimationsModule,
     MatDividerModule,
     MatIconModule,
@@ -67,6 +75,7 @@ import { BusinesshouseholdComponent } from './list/businesshousehold/businesshou
     MatCardModule,
     MatPaginatorModule,
     MatSortModule
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

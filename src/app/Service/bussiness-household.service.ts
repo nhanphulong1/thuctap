@@ -10,7 +10,10 @@ import { throwError } from 'rxjs/internal/observable/throwError';
 
 
 export class BussinessHouseholdService {
-  private REST_API_SERVER = 'http://localhost:8081/businesshouse';
+
+  private REST_API_SERVER = 'http://localhost:8081/businesshouse'
+
+
 
   private httpOptions = {
     headers: new HttpHeaders({
@@ -43,6 +46,7 @@ export class BussinessHouseholdService {
     .pipe(catchError(this.handleError));
   }
 
+
   public postBussinessHouse(data): Observable<any>{
     const url = this.REST_API_SERVER+'/';
     return this.httpClient
@@ -66,10 +70,14 @@ export class BussinessHouseholdService {
 
   public getNameBusinessHouseholds(data): Observable<any>{
     const url = this.REST_API_SERVER+'/search_name/'+data;
+
+  public getBussinessHouseById(data): Observable<any>{
+    const url = this.REST_API_SERVER+'/id/'+data;
     return this.httpClient
     .get<any>(url,this.httpOptions)
     .pipe(catchError(this.handleError));
   }
+
 
   public getCertificationNumber(data): Observable<any>{
     const url = this.REST_API_SERVER+'/search_number/'+data;
@@ -92,3 +100,12 @@ export class BussinessHouseholdService {
     .pipe(catchError(this.handleError));
   }
 }
+
+
+  public putBussinessHouse(data,id): Observable<any>{
+    const url = this.REST_API_SERVER+'/'+id;
+    return this.httpClient
+    .put<any>(url, data ,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
