@@ -104,7 +104,7 @@ export class HomeComponent implements OnInit{
         }
       },
       'transactions':[{
-        'name':'Thành lập mới',
+        'name':'Đang hoạt động',
         'status': 0,
         'receptionDate': this.formSignUp.value.receptDate,
         'receptionPerson': this.formSignUp.value.receptPerson,
