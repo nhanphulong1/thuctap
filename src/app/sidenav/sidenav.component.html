@@ -24,11 +24,12 @@
         <li>
             <a (click)="showReport = !showReport"><mat-icon>dashboard</mat-icon>Thống kê báo cáo<mat-icon class="{{ showReport ? 'expand  expand_active': 'expand' }}">expand_more</mat-icon></a>
             <ul *ngIf="showReport">
-                <li><a href=""><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh thành lập mới</a></li>
-                <li><a href=""><mat-icon>view_list</mat-icon>Thống kê hộ có vốn lớn nhất năm</a></li>
-                <li><a href=""><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh đăng ký thay đổi</a></li>
-                <li><a href=""><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh theo ngành nghề</a></li>
-                <li><a href=""><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh theo loại giao dịch</a></li>
+                <li><a href="statistics/1"><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh thành lập mới</a></li>
+                <li><a href="statistics/2"><mat-icon>view_list</mat-icon>Tổng hợp chung hộ kinh doanh đăng ký</a></li>
+                <li><a href="statistics/3"><mat-icon>view_list</mat-icon>Thống kê hộ có vốn lớn trong năm</a></li>
+                <li><a href="statistics/4"><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh đăng ký thay đổi</a></li>
+                <li><a href="statistics/5"><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh theo ngành nghề</a></li>
+                <li><a href="statistics/6"><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh theo loại giao dịch</a></li>
             </ul>
         </li>
     </ul>

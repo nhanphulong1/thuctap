@@ -1,0 +1,113 @@
+<div class="content">
+    <h2>THỐNG KÊ HỘ KINH DOANH THEO LOẠI GIAO DỊCH</h2><br/>
+    <form [formGroup]="formStatistics" #form>
+        <div class="btn">
+            <button mat-raised-button class="btnFile" (click)="exportExcel()">
+                <!-- <mat-icon>insert_chart_outlined</mat-icon> -->
+                <img class="img" src="../../assets/img/excel.png"/>
+                <mat-label>Xuất file Excel</mat-label>
+            </button>
+            <button type="submit" mat-raised-button class="btnSearch" (click)="onSearch()" #form>
+                <mat-icon>search</mat-icon>
+                <mat-label>Tìm kiếm</mat-label>
+            </button>
+        </div>
+        <br/>
+        <div>
+            <mat-form-field appearance="outline" class="col1">
+                <mat-label>Từ ngày</mat-label>
+                <input type="date" matInput formControlName="fromDate">
+                <mat-error *ngIf="formStatistics.get('fromDate').hasError('required')">Vui lòng chọn ngày!</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col1">
+                <mat-label>Đến ngày</mat-label>
+                <input type="date"  matInput value="{{nowDate}}" formControlName="toDate">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col">
+                <mat-label>Người ký</mat-label>
+                <mat-select formControlName="receptPerson">
+                    <mat-option *ngFor="let element of persons; let i = index" [value]="i-1">
+                        {{ element }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col">
+                <mat-label>Chức vụ</mat-label>
+                <mat-select formControlName="position">
+                    <mat-option *ngFor="let element of position; let i = index" [value]="i-1">
+                        {{ element }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="col">
+                <mat-label>Loại giao dịch</mat-label>
+                <mat-select formControlName="transactions">
+                    <mat-option *ngFor="let element of transactions; let i = index" [value]="i-1">
+                        {{ element }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <p #error id="err1" style="color: red; display: none;">&nbsp;&nbsp;&nbsp;Vui lòng chọn "từ ngày" nhỏ hơn "đến ngày"!</p>
+            <p id="err2" style="color: red; display: none;">&nbsp;&nbsp;&nbsp;Không có dữ liệu để xuất!</p>
+            <p id="err3" style="color: red; display: none;">&nbsp;&nbsp;&nbsp;Vui lòng chọn "đến ngày" nhỏ hơn hoặc bằng ngày hiện tại!</p>
+            <p id="err4" style="color: red; display: none;">&nbsp;&nbsp;&nbsp;Vui lòng chọn "từ ngày" nhỏ hơn ngày hiện tại và nhỏ hơn "đến ngày", còn "đến ngày" nhỏ hơn hoặc bằng ngày hiện tại!</p>
+        </div>
+    </form>
+    <br/>
+    <div class="mat-elevation-z8" #dataTable>
+        <table mat-table [dataSource]="dataSource">
+            
+            <ng-container matColumnDef="1">
+                <th mat-header-cell *matHeaderCellDef> STT </th>
+                <td mat-cell *matCellDef="let myRowData; columns: columnsToDisplay; let i = index"> {{i+1}} </td>
+            </ng-container>
+      
+            <ng-container matColumnDef="2">
+                <th mat-header-cell *matHeaderCellDef> Số ĐKKD </th>
+                <td mat-cell *matCellDef="let element"> {{element?.certificationNumber}} </td>
+            </ng-container>
+        
+            <ng-container matColumnDef="3">
+                <th mat-header-cell *matHeaderCellDef> Ngày cấp </th>
+                <td mat-cell *matCellDef="let element"> {{element?.createdDate | date : 'dd/MM/yyyy'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="4">
+                <th mat-header-cell *matHeaderCellDef> Vốn </th>
+                <td mat-cell *matCellDef="let element"> {{element?.transactions[0]?.certification?.businessCapital}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="5">
+                <th mat-header-cell *matHeaderCellDef> Địa chỉ </th>
+                <td mat-cell *matCellDef="let element"> {{element?.address}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="6">
+                <th mat-header-cell *matHeaderCellDef> Ngành nghề </th>
+                <td mat-cell *matCellDef="let element"> {{element?.transactions[0]?.certification?.categoryCareer[0]?.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="7">
+                <th mat-header-cell *matHeaderCellDef> Chủ hộ </th>
+                <td mat-cell *matCellDef="let element"> {{element?.representative.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="8">
+                <th mat-header-cell *matHeaderCellDef> Ngày sinh </th>
+                <td mat-cell *matCellDef="let element"> {{element?.representative?.identityCard?.birthday | date : 'dd/MM/yyyy'}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="9">
+                <th mat-header-cell *matHeaderCellDef> Số CMND/CCCD  </th>
+                <td mat-cell *matCellDef="let element"> {{element?.representative?.identityCard?.id}} </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[2, 4, 6]" showFirstLastButtons></mat-paginator>
+    </div>
+    <br/>
+</div>

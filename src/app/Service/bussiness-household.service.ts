@@ -55,14 +55,14 @@ export class BussinessHouseholdService {
   }
 
   public getForm(name, certificationNumber, createdDate, status): Observable<any>{
-    const url = this.REST_API_SERVER+'/search/'+name+'&'+certificationNumber+'&'+createdDate+'&'+status;
+    const url = this.REST_API_SERVER+'/search/'+status+'/'+name+'&'+certificationNumber+'&'+createdDate+'&'+status;
     return this.httpClient
     .get<any>(url,this.httpOptions)
     .pipe(catchError(this.handleError));
   }
 
   public getForms(name, certificationNumber, createdDate): Observable<any>{
-    const url = this.REST_API_SERVER+'/search_/'+name+'&'+certificationNumber+'&'+createdDate;
+    const url = this.REST_API_SERVER+'/search/'+name+'&'+certificationNumber+'&'+createdDate;
     return this.httpClient
     .get<any>(url,this.httpOptions)
     .pipe(catchError(this.handleError));
@@ -104,6 +104,19 @@ export class BussinessHouseholdService {
     .pipe(catchError(this.handleError));
   }
 
+  public getStatistics1(dataGT,dataLT,name,address,status): Observable<any>{
+    const url = this.REST_API_SERVER+'/statistic1/'+dataGT+'&'+dataLT+'&'+name+'&'+address+'&'+status;
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+  public getStatistics2(month,year,name,position,status): Observable<any>{
+    const url = this.REST_API_SERVER+'/statistic2/'+month+'&'+year+'&'+name+'&'+position+'&'+status;
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
 
 
   public putBussinessHouse(data,id): Observable<any>{

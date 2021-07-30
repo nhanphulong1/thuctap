@@ -1,0 +1,83 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.material-icons{
+    font-family: 'Material Icons' !important;
+}
+
+.content{
+    background-color: white;
+    border: 1px solid rgba(211, 211, 211, 0.247);
+    margin: 15px;
+    position: relative;
+    padding: 10px 8px;
+}
+
+.content h2{
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.img{
+    font-size: 28px;
+    height: 28px;
+    margin-right: 5px;
+}
+
+.btn button mat-icon{
+    font-size: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.btn button mat-label{
+    font-size: 13px;
+    height: 30px;
+    color: white;
+}
+
+.btnFile{
+    background-color: #1565C0;
+    color: white;
+}
+
+.btnSearch{
+    margin-left: 30px;
+    background-color: #1565C0;
+    color: white;
+}
+
+mat-form-field{
+    width: 220px;
+    padding: 0px 10px;
+}
+
+.col1{
+    width: 100px;
+}
+
+.col2{
+    width: 200px;
+}
+
+table {
+    width: 100%;
+}
+
+table th{
+    background-color: #D6E4FF;
+    color: #353535;
+    font-size: 15px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    // border: 0.01mm solid white;
+}
+
+table td{
+    background-color: #F0F8FF;
+    text-align: center;
+    // border: 1px solid #353535;
+}
