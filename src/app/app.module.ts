@@ -2,8 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CommonModule } from '@angular/common'
-
+import { CommonModule } from '@angular/common';
 
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatDividerModule } from '@angular/material/divider';
@@ -23,11 +22,13 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
-
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExcelServiceService } from './Service/excel/excel-service.service';
 import { SidenavComponent } from './sidenav/sidenav.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
@@ -36,6 +37,12 @@ import { AddHousehouldComponent } from './form/add-househould/add-househould.com
 import { BusinesshouseholdComponent } from './list/businesshousehold/businesshousehold.component';
 import { ReceiptComponent } from './form/receipt/receipt.component';
 import { BussinessCertificateComponent } from './form/bussiness-certificate/bussiness-certificate.component';
+import { Statistics1Component } from './list/statistics1/statistics1.component';
+import { Statistics2Component } from './list/statistics2/statistics2.component';
+import { Statistics3Component } from './list/statistics3/statistics3.component';
+import { Statistics4Component } from './list/statistics4/statistics4.component';
+import { Statistics5Component } from './list/statistics5/statistics5.component';
+import { Statistics6Component } from './list/statistics6/statistics6.component';
 import { CertificationComponent } from './form/certification/certification.component';
 import { RepresentativeComponent } from './form/representative/representative.component';
 import { CareerComponent } from './form/career/career.component';
@@ -59,6 +66,12 @@ import { BusinessAgencyComponent } from './form/business-agency/business-agency.
     BusinesshouseholdComponent,
     ReceiptComponent,
     BussinessCertificateComponent,
+    Statistics1Component,
+    Statistics2Component,
+    Statistics3Component,
+    Statistics4Component,
+    Statistics5Component,
+    Statistics6Component,
     CertificationComponent,
     RepresentativeComponent,
     CareerComponent,
@@ -96,9 +109,11 @@ import { BusinessAgencyComponent } from './form/business-agency/business-agency.
     MatCardModule,
     MatPaginatorModule,
     MatSortModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatTabsModule
   ],
-  providers: [],
+  providers: [ExcelServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
