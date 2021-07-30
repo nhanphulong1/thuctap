@@ -128,6 +128,9 @@ export class BusinesshouseholdComponent implements AfterViewInit {
         this.arr.push(this.i);
         this.i++;
       }
+      this.dataSource = new MatTableDataSource(this.households);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
       // console.log(this.arr);
       // console.log(this.count)
       // this.dataSource = new MatTableDataSource(data);
