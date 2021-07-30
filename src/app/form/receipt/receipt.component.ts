@@ -63,9 +63,11 @@ export class ReceiptComponent implements OnInit {
     this.formReceipt.controls['receiptDate'].setValue( moment(this.data.transactions[this.index].receptionDate).format('YYYY-MM-DD'));
     this.formReceipt.controls['submitPerson'].setValue(this.data.transactions[this.index].submitPerson);
     this.formReceipt.controls['receiptPerson'].setValue(this.data.transactions[this.index].receptionPerson);
+    this.formReceipt.controls['issueUnit'].setValue(this.data.transactions[this.index].issueUnit);
+    this.formReceipt.controls['department'].setValue(this.data.transactions[this.index].department);
     this.formReceipt.controls['setlementDate'].setValue(this.nowDate);
     this.formReceipt.controls['address'].setValue(this.data.address);
-    this.formReceipt.controls['phone'].setValue(this.data.phone);
+    this.formReceipt.controls['phone'].setValue(this.data.phoneNumber);
     this.formReceipt.controls['fax'].setValue(this.data.fax);
     this.formReceipt.controls['email'].setValue(this.data.email);
     this.formReceipt.controls['website'].setValue(this.data.website);
@@ -73,7 +75,7 @@ export class ReceiptComponent implements OnInit {
 
   public getValueReceiptForm(){
     let listProfiles = this.formReceipt.value.listProfile.split('\n');
-    this.data.transactions[2].receipt= {
+    this.data.transactions[this.index].receipt= {
       'id': this.formReceipt.value.receiptNumber,
       'content': this.formReceipt.value.content,
       'listProfile': listProfiles,
@@ -86,7 +88,7 @@ export class ReceiptComponent implements OnInit {
     this.data.transactions[this.index].department = this.formReceipt.value.department;
     this.data.transactions[this.index].issueUnit = this.formReceipt.value.issueUnit;
     this.data.address = this.formReceipt.value.address;
-    this.data.phone = this.formReceipt.value.phone;
+    this.data.phoneNumber = this.formReceipt.value.phone;
     this.data.fax = this.formReceipt.value.fax;
     this.data.email = this.formReceipt.value.email;
     this.data.phone = this.formReceipt.value.phone;

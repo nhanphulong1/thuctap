@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>THÊM CHI NHÁNH KINH DOANH</h1>
+<form [formGroup]="formAgency"> <!-- (ngSubmit)="onSubmits()" -->
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Tên chi nhánh</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-error *ngIf="formAgency.get('name').hasError('required')">Vui lòng nhập tên chi nhánh</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Địa chỉ</mat-label>
+      <input type="text" matInput formControlName="address">
+      <mat-error *ngIf="formAgency.get('address').hasError('required')">Vui lòng nhập địa chỉ chi nhánh</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Số điện thoại</mat-label>
+        <input type="text" matInput formControlName="phoneNumber">
+        <mat-error *ngIf="formAgency.get('phoneNumber').hasError('required')">Vui lòng nhập số điện thoại</mat-error>
+        <mat-error *ngIf="!formAgency.get('phoneNumber').hasError('required') && formAgency.get('phoneNumber').hasError('pattern')">Vui lòng nhập đúng định dạng số điện thoại</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="btn" mat-dialog-actions>
+    <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="formAgency.value" [disabled]="formAgency.invalid"><mat-icon>border_color</mat-icon>Xác nhận</button>
+    <button type="button" mat-raised-button mat-dialog-close="false">Đóng</button>
+  </div>
+</form>

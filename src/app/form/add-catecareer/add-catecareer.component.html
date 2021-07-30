@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>THÊM THÀNH VIÊN GÓP VỐN</h1>
+<form [formGroup]="formcateCareer"> <!-- (ngSubmit)="onSubmits()" -->
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+        <mat-label>Mã lĩnh vực</mat-label>
+        <input type="number" matInput formControlName="id">
+        <mat-error *ngIf="formcateCareer.get('id').hasError('required')">Vui lòng nhập mã lĩnh vực kinh doanh</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Tên lĩnh vực</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-error *ngIf="formcateCareer.get('name').hasError('required')">Vui lòng nhập tên lĩnh vực</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="btn" mat-dialog-actions>
+    <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="formcateCareer.value" [disabled]="formcateCareer.invalid"><mat-icon>border_color</mat-icon>Xác nhận</button>
+    <button type="button" mat-raised-button mat-dialog-close="false">Đóng</button>
+  </div>
+</form>
