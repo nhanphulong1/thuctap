@@ -13,13 +13,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
-import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -42,6 +43,16 @@ import { Statistics3Component } from './list/statistics3/statistics3.component';
 import { Statistics4Component } from './list/statistics4/statistics4.component';
 import { Statistics5Component } from './list/statistics5/statistics5.component';
 import { Statistics6Component } from './list/statistics6/statistics6.component';
+import { CertificationComponent } from './form/certification/certification.component';
+import { RepresentativeComponent } from './form/representative/representative.component';
+import { CareerComponent } from './form/career/career.component';
+import { AddcareerComponent } from './form/addcareer/addcareer.component';
+import { CapitalContributionComponent } from './form/capital-contribution/capital-contribution.component';
+import { AddCapitalComponent } from './form/add-capital/add-capital.component';
+import { CateCareerComponent } from './form/cate-career/cate-career.component';
+import { AddCatecareerComponent } from './form/add-catecareer/add-catecareer.component';
+import { AddAgencyComponent } from './form/add-agency/add-agency.component';
+import { BusinessAgencyComponent } from './form/business-agency/business-agency.component';
 
 
 @NgModule({
@@ -60,8 +71,19 @@ import { Statistics6Component } from './list/statistics6/statistics6.component';
     Statistics3Component,
     Statistics4Component,
     Statistics5Component,
-    Statistics6Component
+    Statistics6Component,
+    CertificationComponent,
+    RepresentativeComponent,
+    CareerComponent,
+    AddcareerComponent,
+    CapitalContributionComponent,
+    AddCapitalComponent,
+    CateCareerComponent,
+    AddCatecareerComponent,
+    AddAgencyComponent,
+    BusinessAgencyComponent,
   ],
+  entryComponents: [AddcareerComponent, AddCapitalComponent, AddCatecareerComponent, AddAgencyComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -88,7 +110,8 @@ import { Statistics6Component } from './list/statistics6/statistics6.component';
     MatPaginatorModule,
     MatSortModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatTabsModule
   ],
   providers: [ExcelServiceService],
   bootstrap: [AppComponent]

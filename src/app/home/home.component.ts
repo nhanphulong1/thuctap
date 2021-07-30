@@ -15,6 +15,7 @@ import { BussinessHouseholdService } from '../Service/bussiness-household.servic
 export class HomeComponent implements OnInit{
 
   formSignUp: FormGroup;
+  certificationNumber ;
 
   nowDate = moment(new Date()).format('YYYY-MM-DD');
 
@@ -25,6 +26,10 @@ export class HomeComponent implements OnInit{
   }
 
   ngOnInit(): void {
+    this.businessService.getLastCertificationNumber().subscribe(result =>{
+      this.certificationNumber = result.text;
+      this.setCertificationNumber();
+    })
     this.formSignUp = this.fb.group({
       receptDate: [this.nowDate, Validators.required],
       receptPerson:['', Validators.required],
@@ -78,12 +83,21 @@ export class HomeComponent implements OnInit{
 //       'updatedDate': this.nowDate
 //     };
 //   }
+
+  public setCertificationNumber(){
+      let tmp = +this.certificationNumber + 1;
+      this.certificationNumber = ''+ tmp;
+      for (let index = this.certificationNumber.length; index < 11; index++) {
+        this.certificationNumber = '0'+this.certificationNumber;
+      }
+
+  }
   
   public getData(){
     return {
       'name': this.formSignUp.value.name,
       'address': this.formSignUp.value.address+' - '+this.formSignUp.value.ward+' - '+this.formSignUp.value.province,
-      'certificationNumber':'00000001',
+      'certificationNumber':this.certificationNumber,
       'status': 1,
       'phoneNumber': this.formSignUp.value.phone,
       'email':'',
@@ -110,19 +124,30 @@ export class HomeComponent implements OnInit{
         'receptionPerson': this.formSignUp.value.receptPerson,
         'submitPerson': this.formSignUp.value.submitName,
         'submitPhone': this.formSignUp.value.phone,
-        'submitId': this.formSignUp.value.submitId
+        'submitId': this.formSignUp.value.submitId,
+        // 'receipt': {},
+        // 'certification':{},
+        // 'businessCertificate': {},
+        // 'changeProfile':{},
+        // 'recallProfile':{},
+        // 'dissolutionProfile':{},
+        // 'supensionProfile':{},
       }],
-      'createdDate': this.nowDate,
-      'updatedDate': this.nowDate
+      // 'businessAgency':[],
+      'createdDate': new Date(),
+      'updatedDate': new Date()
     };
   }
 
 
-  onSubmit(){
+  async onSubmit(){
+    // this.setCertificationNumber();
+    console.log(this.certificationNumber);
     if(!this.formSignUp.invalid){
       let data = this.getData();
       this.businessService.postBussinessHouse(data).subscribe((data) => {
         console.log(data);
+        alert('Thêm mới hộ kinh doanh thành công');
         //Chuyển trang
       })
     }

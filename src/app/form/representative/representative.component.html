@@ -1,0 +1,128 @@
+<div class="formRow">
+    <form [formGroup]="formRepres">
+    <mat-grid-list cols='2' rowHeight='55px'>
+        <mat-grid-tile class="listRight">
+            <mat-form-field appearance="outline">
+                <mat-label>Họ và tên</mat-label>
+                <input type="text" matInput formControlName="name">
+                <mat-error *ngIf="formRepres.get('name').hasError('required')">Vui lòng nhập tên người đại diện</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile class="listLeft">
+            <mat-form-field appearance="outline">
+                <mat-label>Số CMND/CCCD</mat-label>
+                <input type="text" matInput formControlName="cardId">
+                <mat-error *ngIf="formRepres.get('cardId').hasError('required')">Vui lòng nhập số CMND</mat-error>
+                <mat-error *ngIf="!formRepres.get('cardId').hasError('required') && formRepres.get('cardId').hasError('pattern')">Vui lòng nhập đúng định dạng số CMND</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile class="listRight  issueType">
+            <span>Giới tính:</span>
+            <mat-radio-group aria-label="Select an option" formControlName="gender">
+                <mat-radio-button value="0" [checked]="formRepres.value.gender == '0'">Nam</mat-radio-button>
+                <mat-radio-button value="1" [checked]="formRepres.value.gender == '1'">Nữ</mat-radio-button>
+                <mat-radio-button value="2" [checked]="(formRepres.value.gender != '0') && (formRepres.value.gender != '1')">Khác</mat-radio-button>
+            </mat-radio-group>
+        </mat-grid-tile>
+
+        <mat-grid-tile class="listLeft">
+            <mat-form-field appearance="outline">
+                <mat-label>Ngày cấp</mat-label>
+                <input type="date" matInput formControlName="issueDate">
+                <mat-error *ngIf="formRepres.get('issueDate').hasError('required')">Vui lòng nhập số CMND</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile class="listRight">
+            <mat-form-field appearance="outline">
+                <mat-label>Ngày sinh</mat-label>
+                <input type="date" matInput formControlName="birthday">
+                <mat-error *ngIf="formRepres.get('birthday').hasError('required')">Vui lòng nhập ngày sinh</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile class="listLeft">
+            <mat-form-field appearance="outline">
+                <mat-label>Nơi cấp</mat-label>
+                <input type="text" matInput formControlName="issuePlace">
+                <mat-error *ngIf="formRepres.get('issuePlace').hasError('required')">Vui lòng nhập nơi cấp CMND</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile class="listRight">
+            <mat-form-field appearance="outline">
+                <mat-label>Dân tộc</mat-label>
+                <input type="text" matInput formControlName="folk">
+                <mat-error *ngIf="formRepres.get('folk').hasError('required')">Vui lòng nhập dân tộc</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile class="listLeft">
+            <mat-form-field appearance="outline">
+                <mat-label>Quốc tịch</mat-label>
+                <input type="text" matInput formControlName="national">
+                <mat-error *ngIf="formRepres.get('national').hasError('required')">Vui lòng nhập quốc tịch</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan='2'>
+            <mat-form-field appearance="outline" style="width: 100%">
+                <mat-label>Chổ ở thường trú</mat-label>
+                <input type="text" matInput formControlName="resident">
+                <mat-error *ngIf="formRepres.get('resident').hasError('required')">Vui lòng nhập chổ ở thường trú</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan='2'>
+            <mat-form-field appearance="outline" style="width: 100%">
+                <mat-label>Nơi ở hiện tại</mat-label>
+                <input type="text" matInput formControlName="address">
+                <mat-error *ngIf="formRepres.get('address').hasError('required')">Vui lòng nhập nơi ở hiện tại</mat-error>
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-grid-list cols='4' rowHeight='55px'>
+        <mat-grid-tile class="listRight">
+            <mat-form-field appearance="outline">
+                <mat-label>Số điện thoại</mat-label>
+                <input type="text" matInput formControlName="phoneNumber">
+                <!-- <mat-error *ngIf="formRepres.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="outline">
+                <mat-label>FAX</mat-label>
+                <input type="text" matInput formControlName="fax">
+                <!-- <mat-error *ngIf="formRepres.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="text" matInput formControlName="email">
+                <!-- <mat-error *ngIf="formRepres.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile class="listLeft">
+            <mat-form-field appearance="outline">
+                <mat-label>Website</mat-label>
+                <input type="text" matInput formControlName="website">
+                <!-- <mat-error *ngIf="formRepres.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+            </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile colspan="2" class="listRight">
+            <mat-form-field appearance="outline">
+                <mat-label>Mã số thuế cá nhân</mat-label>
+                <input type="text" matInput formControlName="tax">
+            </mat-form-field>
+        </mat-grid-tile>
+    </mat-grid-list>
+    </form>
+</div>

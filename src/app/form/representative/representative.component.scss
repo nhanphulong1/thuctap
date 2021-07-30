@@ -1,0 +1,76 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+mat-icon{
+    font-family: 'Material Icons';
+}
+
+.content{
+    background-color: white;
+    border: 1px solid rgba(211, 211, 211, 0.247);
+    margin: 15px;
+    position: relative;
+    padding: 10px 8px;
+    min-height: calc(100% - 64px - 100px);
+    margin-bottom: 60px;
+}
+
+
+.content .back{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: 1px solid black;
+    padding: 6px 8px;
+    font-size: 15px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.content .back mat-icon{
+    font-size: 18px;
+    height: 18px;
+    width: 23px;
+}
+
+.issueType{
+    display: flex;
+    align-items: center;
+    font-size: 10px;
+}
+
+.issueType span{
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+.issueType mat-radio-group mat-radio-button{
+    margin-right: 15px;
+    font-size: 10px;
+}
+
+.content .formRow mat-grid-list mat-grid-tile{
+    font-size: 10px;
+}
+
+.formRow{
+    margin: 0 15px;
+    margin-top: 15px;
+    font-size: 10px;
+}
+
+.formRow mat-form-field{
+    width: 95%;
+}
+
+.listRight > ::ng-deep figure {
+    justify-content: flex-start !important;
+}
+
+.listLeft > ::ng-deep figure {
+    justify-content: flex-end !important;
+}

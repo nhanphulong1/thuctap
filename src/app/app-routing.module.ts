@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { BussinessCertificateComponent } from './form/bussiness-certificate/bussiness-certificate.component';
+import { CertificationComponent } from './form/certification/certification.component';
 import { ReceiptComponent } from './form/receipt/receipt.component';
 import { HomeComponent } from './home/home.component';
 import { BusinesshouseholdComponent } from './list/businesshousehold/businesshousehold.component';
@@ -25,7 +26,7 @@ const routes: Routes = [
   { path:'statistics/4', component:Statistics4Component},
   { path:'statistics/5', component:Statistics5Component},
   { path:'statistics/6', component:Statistics6Component}
-
+  { path:'certification/:id/:index', component:CertificationComponent},
 ];
 
 @NgModule({

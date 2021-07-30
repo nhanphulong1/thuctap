@@ -148,7 +148,7 @@
                 <mat-grid-tile class="listRight">
                     <mat-form-field appearance="outline">
                         <mat-label>Đơn vị cấp</mat-label>
-                        <mat-select required matInput formControlName="issueUnit">
+                        <mat-select required [(value)]="formReceipt.value.issueUnit" formControlName="issueUnit">
                             <mat-option value="UBND TP Sơn La">UBND TP Sơn La</mat-option>
                             <mat-option value="Ủy Ban Nhân Dân">UỶ BAN NHÂN DÂN</mat-option>
                         </mat-select>
@@ -159,7 +159,7 @@
                 <mat-grid-tile class="listLeft">
                     <mat-form-field appearance="outline">
                         <mat-label>Phòng ban</mat-label>
-                        <mat-select required matInput formControlName="department">
+                        <mat-select required [(value)]="formReceipt.value.department" formControlName="department">
                             <mat-option value="TP Sơn La">TP Sơn La</mat-option>
                             <mat-option value="Phòng tài chính - kế hoạch">Phòng tài chính - kế hoạch</mat-option>
                         </mat-select>

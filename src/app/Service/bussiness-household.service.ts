@@ -2,6 +2,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+// import 'rxjs/add/operator/toPromise';
 import { throwError } from 'rxjs/internal/observable/throwError';
 
 @Injectable({
@@ -41,6 +42,14 @@ export class BussinessHouseholdService {
 
   public getBussinessHouse(): Observable<any>{
     const url = this.REST_API_SERVER+'/';
+    return this.httpClient
+    .get<any>(url,this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
+
+  public getLastCertificationNumber(): Observable<any>{
+    const url = this.REST_API_SERVER+'/max/';
     return this.httpClient
     .get<any>(url,this.httpOptions)
     .pipe(catchError(this.handleError));

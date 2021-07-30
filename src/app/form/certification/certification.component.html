@@ -1,0 +1,182 @@
+<div class="content">
+    <h2>THÊM GIẤY CHỨNG NHẬN KINH DOANH</h2>
+    <a routerLink="/home" routerLinkActive="router-link-active"  class="back"><mat-icon>arrow_back</mat-icon>Quay lại</a>
+    <form (ngSubmit)="onSubmit()" [formGroup]="formCertificate">
+        <div class="issueType">
+            <span>Hình thức cấp:</span>
+            <mat-radio-group aria-label="Select an option" formControlName="type">
+                <mat-radio-button value="0" [checked]="true">Cấp mới</mat-radio-button>
+                <mat-radio-button value="1">Cấp thay đổi</mat-radio-button>
+                <mat-radio-button value="2">Cấp lại</mat-radio-button>
+            </mat-radio-group>
+        </div>
+        <div class="formRow">
+            <mat-grid-list cols='2' rowHeight='55px'>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Đơn vị cấp</mat-label>
+                        <mat-select required [(value)]="formCertificate.value.issueUnit" formControlName="issueUnit">
+                            <mat-option value="UBND TP Sơn La">UBND TP Sơn La</mat-option>
+                            <mat-option value="Ủy Ban Nhân Dân">UỶ BAN NHÂN DÂN</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formCertificate.get('issueUnit').hasError('required')">Vui lòng chọn đơn vị cấp</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Phòng ban</mat-label>
+                        <mat-select required [(value)]="formCertificate.value.department" formControlName="department">
+                            <mat-option value="TP Sơn La">TP Sơn La</mat-option>
+                            <mat-option value="Phòng tài chính - kế hoạch">Phòng tài chính - kế hoạch</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formCertificate.get('department').hasError('required')">Vui lòng chọn phòng ban</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <!-- <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Thay mặt</mat-label>
+                        <input type="text" matInput formControlName="control">
+                        <mat-error *ngIf="formCertificate.get('department').hasError('required')">Vui lòng chọn phòng ban</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ký thay</mat-label>
+                        <input type="text">
+                        <mat-error *ngIf="formCertificate.get('department').hasError('required')">Vui lòng chọn phòng ban</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile> -->
+
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Người ký</mat-label>
+                        <input type="text" matInput formControlName="signer">
+                        <mat-error *ngIf="formCertificate.get('signer').hasError('required')">Vui lòng điền người ký</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Chức vụ</mat-label>
+                        <mat-select required [(value)]="formCertificate.value.position" formControlName="position">
+                            <mat-option value="Trưởng phòng">Trưởng phòng</mat-option>
+                            <mat-option value="Phó trưởng phòng">Phó trưởng phòng</mat-option>
+                            <mat-option value="Phó Chủ tịch">Phó Chủ tịch</mat-option>
+                        </mat-select>
+                        <mat-error *ngIf="formCertificate.get('position').hasError('required')">Vui lòng chọn chức vụ người ký</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Số chứng nhận</mat-label>
+                        <input type="text" matInput formControlName="certificationNumber">
+                        <mat-error *ngIf="formCertificate.get('certificationNumber').hasError('required')">Vui lòng nhập Số chứng nhận!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft"></mat-grid-tile>
+
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ngày cấp</mat-label>
+                        <input type="date" matInput formControlName="issueDate">
+                        <mat-error *ngIf="formCertificate.get('issueDate').hasError('required')">Vui lòng nhập ngày cấp!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft"></mat-grid-tile>
+                
+                <mat-grid-tile colspan='2'>
+                    <mat-form-field appearance="outline" style="width: 100%">
+                        <mat-label>Tên hộ kinh doanh</mat-label>
+                        <input type="text" matInput formControlName="name">
+                        <mat-error *ngIf="formCertificate.get('name').hasError('required')">Vui lòng nhập tên hộ kinh doanh</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile colspan='2'>
+                    <mat-form-field appearance="outline" style="width: 100%">
+                        <mat-label>Địa điểm kinh doanh</mat-label>
+                        <input type="text" matInput formControlName="address">
+                        <mat-error *ngIf="formCertificate.get('address').hasError('required')">Vui lòng nhập địa chỉ kinh doanh</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile colspan='2'>
+                    <mat-form-field appearance="outline" style="width: 100%">
+                        <mat-label>Ghi chú</mat-label>
+                        <input type="text" matInput formControlName="notice">
+                        <mat-error *ngIf="formCertificate.get('notice').hasError('required')">Vui lòng nhập tỉnh!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+
+            <mat-grid-list cols='4' rowHeight='55px'>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Số điện thoại</mat-label>
+                        <input type="text" matInput formControlName="phone">
+                        <!-- <mat-error *ngIf="formCertificate.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field appearance="outline">
+                        <mat-label>FAX</mat-label>
+                        <input type="text" matInput formControlName="fax">
+                        <!-- <mat-error *ngIf="formCertificate.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile>
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input type="text" matInput formControlName="email">
+                        <!-- <mat-error *ngIf="formCertificate.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Website</mat-label>
+                        <input type="text" matInput formControlName="website">
+                        <!-- <mat-error *ngIf="formCertificate.get('submitName').hasError('required')">Vui lòng điền tên người nộp!</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listRight" colspan="2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Vốn kinh doanh</mat-label>
+                        <input type="number" matInput formControlName="capital">
+                        <mat-error *ngIf="formCertificate.get('capital').hasError('required')">Vui lòng nhập vốn kinh doanh!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listLeft" colspan="2">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Tiền viết bằng chữ</mat-label>
+                        <input type="text" matInput formControlName="capitalChar">
+                        <mat-error *ngIf="formCertificate.get('capitalChar').hasError('required')">Vui lòng vốn kinh doanh bằng chữ!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+        <div class="tab">
+            <mat-tab-group mat-align-tabs="start" dynamicHeight>
+                <mat-tab label="Người đại diện"><app-representative></app-representative></mat-tab>
+                <mat-tab label="Ngành nghề"><app-career></app-career></mat-tab>
+                <mat-tab label="Danh sách góp vốn"><app-capital-contribution></app-capital-contribution></mat-tab>
+                <mat-tab label="Lĩnh vực kinh doanh"><app-cate-career></app-cate-career></mat-tab>
+                <mat-tab label="Chi nhánh kinh doanh"><app-business-agency></app-business-agency></mat-tab>
+            </mat-tab-group>
+        </div>
+        <div class="btnAdd">
+            <button mat-raised-button color="primary" class="btnSubmit"><mat-icon>save</mat-icon> Lưu</button>
+            <button type="reset" mat-raised-button color="secondary" class="btnReset"><mat-icon>restart_alt</mat-icon> Làm mới</button>
+        </div>
+    </form>
+</div>
