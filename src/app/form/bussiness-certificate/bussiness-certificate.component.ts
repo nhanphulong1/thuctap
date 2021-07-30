@@ -29,7 +29,7 @@ export class BussinessCertificateComponent implements OnInit {
     endDate: '',
     issuePlace: ['',Validators.required],
     issueDate: ['',Validators.required],
-    singer: ['',Validators.required],
+    signer: ['',Validators.required],
     position: ['',Validators.required]
   });
 
@@ -57,6 +57,8 @@ export class BussinessCertificateComponent implements OnInit {
     this.formCertificate.controls['birthday'].setValue(moment(this.data.representative.identityCard.birthday).format('YYYY-MM-DD'));
     this.formCertificate.controls['address'].setValue(this.data.representative.address);
     this.formCertificate.controls['national'].setValue(this.data.representative.identityCard.national);
+    this.formCertificate.controls['signer'].setValue(this.data.transactions[this.index].signer);
+    this.formCertificate.controls['position'].setValue(this.data.transactions[this.index].position);
     this.formCertificate.controls['identityId'].setValue(this.data.representative.identityCard.id);
     this.formCertificate.controls['identityDate'].setValue(moment(this.data.representative.identityCard.issueDate).format('YYYY-MM-DD'));
   };
@@ -71,7 +73,7 @@ export class BussinessCertificateComponent implements OnInit {
       'endDate': this.formCertificate.value.endDate,
       'position': this.formCertificate.value.position
     };
-    this.data.transactions[this.index].signer = this.formCertificate.value.singer;
+    this.data.transactions[this.index].signer = this.formCertificate.value.signer;
     this.data.transactions[this.index].position = this.formCertificate.value.position;
     this.data.representative.name = this.formCertificate.value.name;
     this.data.representative.address = this.formCertificate.value.address;

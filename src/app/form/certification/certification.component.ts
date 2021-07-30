@@ -89,23 +89,24 @@ export class CertificationComponent implements OnInit {
     this.formCertificate.controls['issueUnit'].setValue(this.data.transactions[this.index].issueUnit);
     this.formCertificate.controls['department'].setValue(this.data.transactions[this.index].department);
     if(this.data.status != 0){
-      this.formCertificate.controls['capital'].setValue(this.data.transactions[this.index].certification.businessCapital);
+      this.formCertificate.controls['capital'].setValue(this.data.transactions[this.index]?.certification?.businessCapital);
+      this.formCertificate.controls['capitalChar'].setValue(this.data.transactions[this.index]?.certification?.businessCapitalChar);
     }
     //điền dữ liệu vào người đại diện
     this.repres.setData(this.data);
 
     //điền dữ liệu vào ngành nghề
-    if(this.data.transactions[this.index].certification?.listCareer){
+    if(this.data.transactions[this.index]?.certification?.listCareer){
       this.careers.setData(this.data.transactions[this.index].certification.listCareer);
     }
 
     //điền dữ liệu vào vốn kinh doanh
-    if(this.data.transactions[this.index].certification?.capitalContribution){
+    if(this.data.transactions[this.index]?.certification?.capitalContribution){
       this.capital.setData(this.data.transactions[this.index].certification.capitalContribution);
     }
 
     //điền dữ liệu vào lĩnh vực kinh doanh
-    if(this.data.transactions[this.index].certification?.categoryCareer){
+    if(this.data.transactions[this.index]?.certification?.categoryCareer){
       this.cateCareer.setData(this.data.transactions[this.index].certification.categoryCareer);
     }
 
@@ -150,7 +151,7 @@ export class CertificationComponent implements OnInit {
     this.data.fax = this.formCertificate.value.fax;
     this.data.website = this.formCertificate.value.website;
     this.data.transactions[this.index].position = this.formCertificate.value.position;
-    this.data.transactions[this.index].singer = this.formCertificate.value.singer;
+    this.data.transactions[this.index].signer = this.formCertificate.value.signer;
     this.data.transactions[this.index].issueUnit = this.formCertificate.value.issueUnit;
     this.data.transactions[this.index].department = this.formCertificate.value.department;
   }
@@ -159,8 +160,10 @@ export class CertificationComponent implements OnInit {
     this.repres.onCheck();
     if(this.repres.formRepres.valid && this.formCertificate.valid && this.careers.careers.length > 0){
       this.getData();
+      let kq =  this.service.putBussinessHouse(this.data,this.id).subscribe((dt)=>{
+        console.log(dt);
+      });
       console.log(this.data);
-      this.service.putBussinessHouse(this.data,this.id);
     }
   };
 }

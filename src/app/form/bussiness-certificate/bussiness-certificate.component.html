@@ -83,7 +83,6 @@
 
                 <mat-grid-tile></mat-grid-tile>
 
-
                 <mat-grid-tile class="listRight">
                     <mat-form-field appearance="outline">
                         <mat-label>Từ ngày</mat-label>
@@ -119,15 +118,19 @@
                 <mat-grid-tile class="listRight">
                     <mat-form-field appearance="outline">
                         <mat-label>Người ký</mat-label>
-                        <input type="text" matInput formControlName="singer">
-                        <mat-error *ngIf="formCertificate.get('singer').hasError('required')">Vui lòng người ký tên</mat-error>
+                        <input type="text" matInput formControlName="signer">
+                        <mat-error *ngIf="formCertificate.get('signer').hasError('required')">Vui lòng người ký tên</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
 
                 <mat-grid-tile class="listLeft">
                     <mat-form-field appearance="outline">
                         <mat-label>Chức vụ</mat-label>
-                        <input type="text" matInput formControlName="position">
+                        <mat-select required [(value)]="formCertificate.value.position" formControlName="position">
+                            <mat-option value="Trưởng phòng">Trưởng phòng</mat-option>
+                            <mat-option value="Phó trưởng phòng">Phó trưởng phòng</mat-option>
+                            <mat-option value="Phó Chủ tịch">Phó Chủ tịch</mat-option>
+                        </mat-select>
                         <mat-error *ngIf="formCertificate.get('position').hasError('required')">Vui lòng nhập chức vụ người ký</mat-error>
                     </mat-form-field>
                 </mat-grid-tile>
