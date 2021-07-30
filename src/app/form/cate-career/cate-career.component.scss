@@ -1,0 +1,55 @@
+.header{
+    width: 100%;
+    margin-top: 2px;
+}
+
+.header .title{
+        background: #c4c4c470;
+        display: inline-block;
+        width: 60%;
+        height: 100%;
+        padding-left: 30px;
+        font-size: 12px;
+        font-weight: 500;
+}
+
+.header .btn .btnAdd{
+    background-color: #0067B2;
+    position: relative;
+    cursor: pointer;
+    border-radius: 3px;
+    color: white;
+    margin-left: 5px;
+    font-size: 12px;
+    width: fit-content;
+    padding: 4px 10px;
+    padding-left: 30px;
+}
+
+.header .btn .btnAdd:hover{
+    background-color: #004a80;
+}
+
+.header .btn .btnAdd mat-icon{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 19px;
+    height: 19px;
+    width: 19px;
+}
+
+table {
+    width: 100%;
+}
+
+.mat-header-cell {
+    background: #1565c0ce;
+    color: white;
+    font-size: 12px;
+}
+
+.mat-header-row, .mat-row {
+    height: 30px;
+  }

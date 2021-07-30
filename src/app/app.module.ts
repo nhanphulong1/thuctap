@@ -14,13 +14,14 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
+import {MatTabsModule} from '@angular/material/tabs';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCardModule } from '@angular/material/card';
-import { MatPaginatorModule, MatPaginatorIntl } from '@angular/material/paginator';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 
 
@@ -35,6 +36,16 @@ import { AddHousehouldComponent } from './form/add-househould/add-househould.com
 import { BusinesshouseholdComponent } from './list/businesshousehold/businesshousehold.component';
 import { ReceiptComponent } from './form/receipt/receipt.component';
 import { BussinessCertificateComponent } from './form/bussiness-certificate/bussiness-certificate.component';
+import { CertificationComponent } from './form/certification/certification.component';
+import { RepresentativeComponent } from './form/representative/representative.component';
+import { CareerComponent } from './form/career/career.component';
+import { AddcareerComponent } from './form/addcareer/addcareer.component';
+import { CapitalContributionComponent } from './form/capital-contribution/capital-contribution.component';
+import { AddCapitalComponent } from './form/add-capital/add-capital.component';
+import { CateCareerComponent } from './form/cate-career/cate-career.component';
+import { AddCatecareerComponent } from './form/add-catecareer/add-catecareer.component';
+import { AddAgencyComponent } from './form/add-agency/add-agency.component';
+import { BusinessAgencyComponent } from './form/business-agency/business-agency.component';
 
 
 @NgModule({
@@ -47,8 +58,19 @@ import { BussinessCertificateComponent } from './form/bussiness-certificate/buss
     AddHousehouldComponent,
     BusinesshouseholdComponent,
     ReceiptComponent,
-    BussinessCertificateComponent
+    BussinessCertificateComponent,
+    CertificationComponent,
+    RepresentativeComponent,
+    CareerComponent,
+    AddcareerComponent,
+    CapitalContributionComponent,
+    AddCapitalComponent,
+    CateCareerComponent,
+    AddCatecareerComponent,
+    AddAgencyComponent,
+    BusinessAgencyComponent,
   ],
+  entryComponents: [AddcareerComponent, AddCapitalComponent, AddCatecareerComponent, AddAgencyComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -73,7 +95,8 @@ import { BussinessCertificateComponent } from './form/bussiness-certificate/buss
     MatBadgeModule,
     MatCardModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatTabsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

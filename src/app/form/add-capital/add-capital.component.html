@@ -1,0 +1,33 @@
+<h1 mat-dialog-title>THÊM THÀNH VIÊN GÓP VỐN</h1>
+<form [formGroup]="formCapital"> <!-- (ngSubmit)="onSubmits()" -->
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Họ và tên</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-error *ngIf="formCapital.get('name').hasError('required')">Vui lòng nhập tên thành viên</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Số CMND/CCCD</mat-label>
+      <input type="text" matInput formControlName="id">
+      <mat-error *ngIf="formCapital.get('id').hasError('required')">Vui lòng nhập số CMND</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Loại tài sản</mat-label>
+      <mat-select required matInput formControlName="propertyType">
+        <mat-option value="tiền mặt" selected>Tiền mặt</mat-option>
+        <mat-option value="cơ sở vật chất">Cơ sở vật chất</mat-option>
+        <mat-option value="Mặt bằng">Mặt bằng</mat-option>
+        <mat-option value="Phương tiện">Phương tiện</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Giá trị</mat-label>
+        <input type="number" matInput formControlName="value">
+        <mat-error *ngIf="formCapital.get('value').hasError('required')">Vui lòng nhập giá trị góp vốn</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="btn" mat-dialog-actions>
+    <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="formCapital.value" [disabled]="formCapital.invalid"><mat-icon>border_color</mat-icon>Xác nhận</button>
+    <button type="button" mat-raised-button mat-dialog-close="false">Đóng</button>
+  </div>
+</form>

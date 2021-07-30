@@ -1,0 +1,22 @@
+<h1 mat-dialog-title>THÊM NGÀNH NGHỀ KINH DOANH</h1>
+<form [formGroup]="formCareer"> <!-- (ngSubmit)="onSubmits()" -->
+  <div mat-dialog-content>
+    <mat-form-field appearance="outline">
+      <mat-label>Mã ngành</mat-label>
+      <input type="text" matInput formControlName="careerId">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Danh mục ngành nghề</mat-label>
+      <input type="text" matInput formControlName="cateId">
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Tên ngành nghề</mat-label>
+      <input type="text" matInput formControlName="name">
+      <mat-error *ngIf="formCareer.get('name').hasError('required')">Vui lòng nhập tên ngành nghề</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="btn" mat-dialog-actions>
+    <button type="submit" mat-raised-button color="primary" [mat-dialog-close]="formCareer.value" [disabled]="formCareer.invalid"><mat-icon>border_color</mat-icon>Xác nhận</button>
+    <button type="button" mat-raised-button mat-dialog-close="false">Đóng</button>
+  </div>
+</form>
