@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import * as moment from 'moment';
 import { BussinessHouseholdService } from 'src/app/Service/bussiness-household.service';
+import Swal from 'sweetalert2';
 import { BusinessAgencyComponent } from '../business-agency/business-agency.component';
 import { CapitalContributionComponent } from '../capital-contribution/capital-contribution.component';
 import { CareerComponent } from '../career/career.component';
@@ -58,7 +59,8 @@ export class CertificationComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: BussinessHouseholdService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
     ) { }
 
   ngOnInit(): void {
@@ -158,12 +160,24 @@ export class CertificationComponent implements OnInit {
 
   public onSubmit(){
     this.repres.onCheck();
+    if(this.careers.careers.length == 0){
+      alert("Vui lòng chọn ngành nghề!");
+    }
     if(this.repres.formRepres.valid && this.formCertificate.valid && this.careers.careers.length > 0){
       this.getData();
       let kq =  this.service.putBussinessHouse(this.data,this.id).subscribe((dt)=>{
-        console.log(dt);
+        if(dt){
+          // alert("cập nhật chứng nhận thành công!");
+          // this.router.navigate(['list/businesshousehold']);
+          Swal.fire(
+            'Cập nhật thành công!',
+            'Bạn đã cập nhật chứng nhận thành công!',
+            'success'
+          ).then( result =>{
+            this.router.navigate(['list/businesshousehold']);
+          });
+        }
       });
-      console.log(this.data);
     }
   };
 }

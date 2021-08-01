@@ -135,16 +135,9 @@ export class Statistics1Component implements OnInit {
       this.businessService.getStatistics1(data.fromDate, data.toDate, data.receptPerson, data.address, 0).subscribe((data1)  => {
         this.business = data1;
         console.log('TABLE', data1);
-        if ((data.receptPerson=='Tất cả')||(data.address=='Tất cả')){
-          this.dataSource = new MatTableDataSource(this.households);
-          this.dataSource.paginator = this.paginator;
-          this.data_excel = this.households;
-        }
-        else{
-          this.dataSource = new MatTableDataSource(this.business);
-          this.dataSource.paginator = this.paginator;
-          this.data_excel = this.business;
-        }
+        this.dataSource = new MatTableDataSource(this.business);
+        this.dataSource.paginator = this.paginator;
+        this.data_excel = this.business;
       });
 
       if (data.toDate.getFullYear() >= moment(new Date()).year()){

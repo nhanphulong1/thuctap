@@ -188,9 +188,6 @@ export class Statistics6Component implements OnInit {
           }
         }
       }
-      this.dataSource = new MatTableDataSource(this.households);
-      this.dataSource.paginator = this.paginator;
-      this.data_excel = this.households;
     }
   }
 

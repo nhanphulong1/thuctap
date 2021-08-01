@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ParamMap, ActivatedRoute } from '@angular/router';
+import { ParamMap, ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import * as moment from 'moment';
 import { BussinessHouseholdService } from 'src/app/Service/bussiness-household.service';
 
@@ -41,7 +42,8 @@ export class ReceiptComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private service: BussinessHouseholdService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
 
@@ -99,7 +101,17 @@ export class ReceiptComponent implements OnInit {
     if(this.formReceipt.valid){
       this.getValueReceiptForm();
       this.service.putBussinessHouse(this.data,this.id).subscribe((dt)=>{
-        console.log(dt);
+        if(dt){
+          // alert("cập nhật biên nhận thành công!");
+          // this.router.navigate(['list/businesshouse']);
+          Swal.fire(
+            'Cập nhật thành công!',
+            'Bạn đã tạo giấy biên nhận thành công!',
+            'success'
+          ).then( result =>{
+            this.router.navigate(['list/businesshousehold']);
+          });
+        }
       });
     }
   };
