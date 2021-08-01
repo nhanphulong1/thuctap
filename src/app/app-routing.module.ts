@@ -16,7 +16,7 @@ import { Statistics6Component } from './list/statistics6/statistics6.component';
 
 const routes: Routes = [
   { path:'home', component:HomeComponent},
-  { path: '', redirectTo:'home', pathMatch:'full'},
+  { path: '', redirectTo:'list/businesshousehold', pathMatch:'full'},
   { path:'list/businesshousehold', component:BusinesshouseholdComponent},
   { path:'receipt/:id/:index', component:ReceiptComponent},
   { path:'certificate/:id/:index', component:BussinessCertificateComponent},
