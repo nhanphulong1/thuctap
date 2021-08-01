@@ -16,8 +16,8 @@ import { Statistics6Component } from './list/statistics6/statistics6.component';
 
 const routes: Routes = [
   { path:'home', component:HomeComponent},
-  { path: '', redirectTo:'home', pathMatch:'full'},
   { path:'list/businesshousehold', component:BusinesshouseholdComponent},
+  { path: '', redirectTo:'list/businesshousehold', pathMatch:'full'},
   { path:'receipt/:id/:index', component:ReceiptComponent},
   { path:'certificate/:id/:index', component:BussinessCertificateComponent},
   { path:'statistics/1', component:Statistics1Component},
@@ -25,7 +25,7 @@ const routes: Routes = [
   { path:'statistics/3', component:Statistics3Component},
   { path:'statistics/4', component:Statistics4Component},
   { path:'statistics/5', component:Statistics5Component},
-  { path:'statistics/6', component:Statistics6Component}
+  { path:'statistics/6', component:Statistics6Component},
   { path:'certification/:id/:index', component:CertificationComponent},
 ];
 
