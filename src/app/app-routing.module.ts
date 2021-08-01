@@ -25,7 +25,7 @@ const routes: Routes = [
   { path:'statistics/3', component:Statistics3Component},
   { path:'statistics/4', component:Statistics4Component},
   { path:'statistics/5', component:Statistics5Component},
-  { path:'statistics/6', component:Statistics6Component}
+  { path:'statistics/6', component:Statistics6Component},
   { path:'certification/:id/:index', component:CertificationComponent},
 ];
 
