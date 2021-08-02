@@ -250,10 +250,12 @@ export class Statistics6Component implements OnInit {
           }
         }
       }
+
       document.getElementById("err1").style.display = 'none';
       // this.dataSource = new MatTableDataSource(this.households);
       // this.dataSource.paginator = this.paginator;
       // this.data_excel = this.households;
+
     }
   }
 

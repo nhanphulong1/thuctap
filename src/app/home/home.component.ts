@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormGroupDirective, NgForm, FormBuilder, FormControl, Validators } from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 
 import * as moment from 'moment';
 import { BussinessHouseholdService } from '../Service/bussiness-household.service';
@@ -22,6 +24,7 @@ export class HomeComponent implements OnInit{
   constructor(
     private fb: FormBuilder,
     private businessService: BussinessHouseholdService,
+    private router: Router,
   ) {
   }
 
@@ -146,9 +149,15 @@ export class HomeComponent implements OnInit{
     if(!this.formSignUp.invalid){
       let data = this.getData();
       this.businessService.postBussinessHouse(data).subscribe((data) => {
-        console.log(data);
-        alert('Thêm mới hộ kinh doanh thành công');
-        //Chuyển trang
+        // console.log(data);
+        // alert('Thêm mới hộ kinh doanh thành công');
+        Swal.fire(
+          'Thêm mới thành công!',
+          'Bạn đã tạo mới hộ kinh doanh thành công!',
+          'success'
+        ).then( result =>{
+          this.router.navigate(['list/businesshousehold']);
+        });
       })
     }
 

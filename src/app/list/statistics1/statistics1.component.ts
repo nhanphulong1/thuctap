@@ -135,6 +135,7 @@ export class Statistics1Component implements OnInit {
       this.data_excel = [];
       document.getElementById("err2").style.display = 'none';
 
+
       // this.j = 0;
       // this.arr.forEach(element => {
       //   this.createdDate[this.j] = new Date(this.households[element].createdDate);
@@ -174,6 +175,7 @@ export class Statistics1Component implements OnInit {
             }
           }
         }
+
       });
 
       this.dataSource = new MatTableDataSource(this.business);
