@@ -12,8 +12,6 @@ export interface BusinessHouseHoldElement {
   name: string;
   number: string;
   date: string;
-  person: string;
-  phone: string;
   address: string;
   carrer: string;
   capital: number;
@@ -44,7 +42,7 @@ export class Statistics3Component implements OnInit {
   public business = [];
 
   displayedColumns: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  data_excel: BusinessHouseHoldElement[];
+  data_excel = [];
   dataSource;
 
   constructor(
@@ -56,7 +54,7 @@ export class Statistics3Component implements OnInit {
     this.formStatistics = this.fb.group({
       // month: [-1, Validators.required],
       year: [-1],
-      receptionPerson:[-1],
+      signer:[-1],
       position:[-1]
     });
   }
@@ -67,20 +65,20 @@ export class Statistics3Component implements OnInit {
       console.log(this.households);
       this.count = data.length;
       // console.log(this.count);
-      while (this.i < this.count-1 ) {
+      while (this.i < this.count) {
         // console.log(this.i);
-        this.arr.push(this.i+1);
+        this.arr.push(this.i);
         this.i++;
       }
       // console.log(this.arr);
-      this.business = [];
-        this.j = 0;
-        this.arr.forEach(element => {
-          this.business[this.j] = this.households[element];
-          this.j++;
-        });
-      this.business[this.j] = this.households[this.j];
-      console.log(this.business);
+      // this.business = [];
+      //   this.j = 0;
+      //   this.arr.forEach(element => {
+      //     this.business[this.j] = this.households[element];
+      //     this.j++;
+      //   });
+      // this.business[this.j] = this.households[this.j];
+      // console.log(this.business);
       this.j = 0;
       this.k = 0;
       this.l = 0;
@@ -90,8 +88,8 @@ export class Statistics3Component implements OnInit {
       this.persons.push('Tất cả');
       this.position.push('Tất cả');
       this.arr.forEach(element => {
-        if((this.households[element]?.transactions[0]?.receptionPerson)!=(this.persons[this.j])){
-          this.persons[this.j+1] = this.households[element]?.transactions[0]?.receptionPerson;
+        if((this.households[element]?.transactions[0]?.signer)!=(this.persons[this.j])){
+          this.persons[this.j+1] = this.households[element]?.transactions[0]?.signer;
           this.j++;
         }
         if((this.households[element]?.transactions[0]?.position)!=(this.position[this.k])){
@@ -124,34 +122,131 @@ export class Statistics3Component implements OnInit {
           this.year[this.i+1] = this.l;
           this.i++;
       }
+
+      this.persons = Array.from(new Set(this.persons));
+      this.position = Array.from(new Set(this.position));
     });
   }
 
   public getData(){
+    document.getElementById("err2").style.display = 'none';
     return {
-      // 'month': this.formStatistics.value.month,
-      'year': this.formStatistics.value.year,
-      'receptionPerson': this.formStatistics.value.receptionPerson,
-      'position': this.formStatistics.value.position
+      // 'month': this.month[this.formStatistics.value.month+1],
+      'year': this.year[this.formStatistics.value.year+1],
+      'signer': this.persons[this.formStatistics.value.signer+1],
+      'position': this.position[this.formStatistics.value.position+1]
     }
   }
 
   onSearch(){
     if(!this.formStatistics.invalid){
       let data = this.getData();
-      this.dataSource = new MatTableDataSource(this.households);
+      this.business = [];
+      this.dataSource = null;
+      this.paginator.length = 0;
+      this.data_excel = [];
+
+      this.j = 0;
+      this.arr.forEach(element => {
+        if (data.position=='Tất cả'){
+          if (data.signer=='Tất cả'){
+            if (data.year=='Tất cả'){
+              ///111
+              this.business[this.j] = this.households[element];
+              this.j++;
+            }
+            else{
+              //110
+              if (data.year==new String(new Date(this.households[element]?.createdDate).getFullYear())){
+                this.business[this.j] = this.households[element];
+                this.j++;
+              }
+            }
+          }
+          else{
+            if (data.year=='Tất cả'){
+              //101
+              if (data.signer==(this.households[element]?.transactions[0]?.signer)){
+                this.business[this.j] = this.households[element];
+                this.j++;
+              }
+            }
+            else{
+              //100
+              if ((data.signer==(this.households[element]?.transactions[0]?.signer))&&(data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))){
+                this.business[this.j] = this.households[element];
+                this.j++;
+              }
+            }
+          }
+        }
+        else{
+          if (data.signer=='Tất cả'){
+            if (data.year=='Tất cả'){
+              ///011
+              if (data.position==(this.households[element]?.transactions[0]?.position)){
+                this.business[this.j] = this.households[element];
+                this.j++;
+              }
+            }
+            else{
+              //010
+              if ((data.position==(this.households[element]?.transactions[0]?.position))&&(data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))){
+                this.business[this.j] = this.households[element];
+                this.j++;
+              }
+            }
+          }
+          else{
+            if (data.year=='Tất cả'){
+              //001
+              if ((data.position==(this.households[element]?.transactions[0]?.position))&&(data.signer==(this.households[element]?.transactions[0]?.signer))){
+                this.business[this.j] = this.households[element];
+                this.j++;
+              }
+            }
+            else{
+              //000
+              if ((data.position==(this.households[element]?.transactions[0]?.position))&&((data.signer==(this.households[element]?.transactions[0]?.signer))&&(data.year==new String(new Date(this.households[element]?.createdDate).getFullYear())))){
+                this.business[this.j] = this.households[element];
+                this.j++;
+              }
+            }
+          }
+        }
+      });
+
+      this.dataSource = new MatTableDataSource(this.business);
       this.dataSource.paginator = this.paginator;
-      this.data_excel = this.households;
+      if (this.business.length == 0){
+        this.data_excel = [];
+      }else{
+        // this.data_excel = this.business;
+        this.j = 0;
+        this.business.forEach(element => {
+          this.data_excel[this.j] = {
+            position: this.j+1,
+            name: element?.name,
+            number: element?.certificationNumber,
+            date: new Date(element?.createdDate).getDate()+'/'+new Date(element?.createdDate).getMonth()+'/'+new Date(element?.createdDate).getFullYear(),
+            address: element?.address,
+            carrer: element?.transactions[0]?.certification?.listCareer[0]?.name,
+            capital: element?.transactions[0]?.certification?.businessCapital
+          };
+          this.j++;
+        });
+      }
+      console.log(this.data_excel);
     }
   }
 
 
   exportExcel(){
-    if(this.data_excel == null){
+    if(this.data_excel.length == 0){
       // document.getElementById("err1").style.display = 'none';
-      // document.getElementById("err2").style.display = 'block';
+      document.getElementById("err2").style.display = 'block';
     }else{
-      // document.getElementById("err2").style.display = 'none';
+      document.getElementById("err2").style.display = 'none';
       this.excelService.exportAsExcelFile(this.data_excel, 'statistics');
     }
   }
