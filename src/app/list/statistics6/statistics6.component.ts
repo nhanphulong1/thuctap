@@ -13,14 +13,14 @@ import { ExcelServiceService } from '../../Service/excel/excel-service.service';
 
 export interface BusinessHouseHoldElement {
   position: number;
-  name: string;
   number: string;
   date: string;
-  person: string;
-  phone: string;
+  capital: number;
   address: string;
   carrer: string;
-  capital: number;
+  person: string;
+  birtday: number;
+  identityCard: number;
 }
 
 @Component({
@@ -50,7 +50,7 @@ export class Statistics6Component implements OnInit {
   transactions: string[] = ['Tất cả', 'Cấp mới giấy phép', 'Điều chỉnh giấy phép', 'Cấp lại giấy phép', 'Tạm ngưng kinh doanh', 'Thu hồi giấy phép', 'Giải thể doanh nghiệp'];
 
   displayedColumns: string[] = ['1', '2', '3', '4', '5', '6', '7', '8', '9'];
-  data_excel: BusinessHouseHoldElement[];
+  data_excel = [];
   dataSource;
   signers;
 
@@ -64,7 +64,7 @@ export class Statistics6Component implements OnInit {
     this.formStatistics = this.fb.group({
       fromDate: ['', Validators.required],
       toDate: [this.nowDate],
-      receptPerson:[-1],
+      signer:[-1],
       position:[-1],
       transactions:[-1]
     });
@@ -97,8 +97,8 @@ export class Statistics6Component implements OnInit {
       // this.signers = new MatTableDataSource(this.households);
       // console.log(this.signers);
       this.arr.forEach(element => {
-        if((this.households[element]?.transactions[0]?.receptionPerson)!=(this.persons[this.j])){
-          this.persons[this.j+1] = this.households[element]?.transactions[0]?.receptionPerson;
+        if((this.households[element]?.transactions[0]?.signer)!=(this.persons[this.j])){
+          this.persons[this.j+1] = this.households[element]?.transactions[0]?.signer;
           this.j++;
         }
         if((this.households[element]?.transactions[0]?.position)!=(this.position[this.k])){
@@ -111,10 +111,11 @@ export class Statistics6Component implements OnInit {
 
   public getData(){
     return {
-      'formDate': new Date(this.formStatistics.value.fromDate),
+      'fromDate': new Date(this.formStatistics.value.fromDate),
       'toDate': new Date(this.formStatistics.value.toDate),
-      'receptPerson': this.formStatistics.value.receptPerson,
-      'address': this.formStatistics.value.address
+      'signer': this.persons[this.formStatistics.value.signer+1],
+      'position': this.position[this.formStatistics.value.position+1],
+      'transactions': this.transactions[this.formStatistics.value.transactions+1]
     }
   }
 
@@ -122,17 +123,78 @@ export class Statistics6Component implements OnInit {
     if(!this.formStatistics.invalid){
       let data = this.getData();
       // console.log(data);
+      this.business = [];
       this.dataSource = null;
       this.paginator.length = 0;
-      this.data_excel = null;
+      this.data_excel = [];
       document.getElementById("err2").style.display = 'none';
+
+      this.j = 0;
+      this.arr.forEach(element => {
+        if (data.signer=='Tất cả'){
+          if (data.position=='Tất cả'){
+            if((data.fromDate<=new Date(this.households[element]?.createdDate))&&(data.toDate>=new Date(this.households[element]?.createdDate))){
+              this.business[this.j] = this.households[element];
+              this.j++;
+            }
+          }
+          else{
+            if((data.fromDate<=new Date(this.households[element]?.createdDate))&&(data.toDate>=new Date(this.households[element]?.createdDate))&&(data.position==this.households[element]?.transactions[0]?.position)){
+              this.business[this.j] = this.households[element];
+              this.j++;
+            }
+          }
+        }
+        else{
+          if (data.position=='Tất cả'){
+            if((data.fromDate<=new Date(this.households[element]?.createdDate))&&(data.toDate>=new Date(this.households[element]?.createdDate))&&(data.signer==this.households[element]?.transactions[0]?.signer)){
+              this.business[this.j] = this.households[element];
+              this.j++;
+            }
+          }
+          else{
+            if((data.fromDate<=new Date(this.households[element]?.createdDate))&&(data.toDate>=new Date(this.households[element]?.createdDate))&&(data.signer==this.households[element]?.transactions[0]?.signer)&&(data.position==this.households[element]?.transactions[0]?.position)){
+              this.business[this.j] = this.households[element];
+              this.j++;
+            }
+          }
+        }
+      });
+
+      this.dataSource = new MatTableDataSource(this.business);
+      this.dataSource.paginator = this.paginator;
+      if (this.business.length == 0){
+        this.data_excel = [];
+      }else{
+        // this.data_excel = this.business;
+        this.j = 0;
+        this.business.forEach(element => {
+          this.data_excel[this.j] = {
+            position: this.j+1,
+            number: element?.certificationNumber,
+            date: new Date(element?.createdDate).getDate()+'/'+new Date(element?.createdDate).getMonth()+'/'+new Date(element?.createdDate).getFullYear(),
+            capital: element?.transactions[0]?.certification?.businessCapital,
+            address: element?.address,
+            carrer: element?.transactions[0]?.certification?.listCareer[0]?.name,
+            person: element?.representative.name,
+            birtday: new Date(element?.representative?.identityCard?.birthday).getDate()+'/'+new Date(element?.representative?.identityCard?.birthday).getMonth()+'/'+new Date(element?.representative?.identityCard?.birthday).getFullYear(),
+            identityCard: element?.representative?.identityCard?.id
+          };
+          // console.log(this.data_excel);
+          // this.data_excel[this.j] = excel[element];
+          this.j++;
+        });
+      }
+      console.log(this.data_excel);
+
+
       if (data.toDate.getFullYear() >= moment(new Date()).year()){
         // console.log(data.toDate.getFullYear());
         if (data.toDate.getMonth() >= moment(new Date()).month()){
           // console.log(data.toDate.getMonth());
           if (data.toDate.getDate() > moment(new Date()).date()){
             // console.log(data.toDate.getDate());
-            if (data.formDate.getDate() < moment(new Date()).date()){
+            if (data.fromDate.getDate() < moment(new Date()).date()){
               document.getElementById("err1").style.display = 'none';
             }
             // else{
@@ -157,7 +219,7 @@ export class Statistics6Component implements OnInit {
             document.getElementById("err3").style.display = 'block';
             this.dataSource = null;
             this.paginator.length = 0;
-            this.data_excel = null;
+            this.data_excel = [];
             return;
           }
           else {
@@ -167,11 +229,11 @@ export class Statistics6Component implements OnInit {
         }
       }
 
-      if (data.formDate.getFullYear() >= data.toDate.getFullYear()){
+      if (data.fromDate.getFullYear() >= data.toDate.getFullYear()){
         // console.log(data.formDate.getFullYear());
-        if (data.formDate.getMonth() >= data.toDate.getMonth()){
+        if (data.fromDate.getMonth() >= data.toDate.getMonth()){
           // console.log(data.formDate.getMonth());
-          if (data.formDate.getDate() >= data.toDate.getDate()){
+          if (data.fromDate.getDate() >= data.toDate.getDate()){
             // console.log(data.formDate.getDate());
             if(data.toDate.getDate() > moment(new Date()).date()){
               document.getElementById("err3").style.display = 'block';
@@ -182,20 +244,21 @@ export class Statistics6Component implements OnInit {
           else{
             // console.log(this.households);
             document.getElementById("err1").style.display = 'none';
-            this.dataSource = new MatTableDataSource(this.households);
-            this.dataSource.paginator = this.paginator;
-            this.data_excel = this.households;
+            // this.dataSource = new MatTableDataSource(this.households);
+            // this.dataSource.paginator = this.paginator;
+            // this.data_excel = this.households;
           }
         }
       }
-      this.dataSource = new MatTableDataSource(this.households);
-      this.dataSource.paginator = this.paginator;
-      this.data_excel = this.households;
+      document.getElementById("err1").style.display = 'none';
+      // this.dataSource = new MatTableDataSource(this.households);
+      // this.dataSource.paginator = this.paginator;
+      // this.data_excel = this.households;
     }
   }
 
   exportExcel(){
-    if(this.data_excel == null){
+    if(this.data_excel.length == 0){
       document.getElementById("err1").style.display = 'none';
       document.getElementById("err2").style.display = 'block';
     }else{

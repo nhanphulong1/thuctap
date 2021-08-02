@@ -25,7 +25,7 @@
             </mat-form-field>
             <mat-form-field appearance="outline" class="col">
                 <mat-label>Người ký</mat-label>
-                <mat-select formControlName="receptPerson">
+                <mat-select formControlName="signer">
                     <mat-option *ngFor="let element of persons; let i = index" [value]="i-1">
                         {{ element }}
                     </mat-option>
@@ -84,7 +84,7 @@
 
             <ng-container matColumnDef="6">
                 <th mat-header-cell *matHeaderCellDef> Ngành nghề </th>
-                <td mat-cell *matCellDef="let element"> {{element?.transactions[0]?.certification?.categoryCareer[0]?.name}} </td>
+                <td mat-cell *matCellDef="let element"> {{element?.transactions[0]?.certification?.listCareer[0]?.name}} </td>
             </ng-container>
 
             <ng-container matColumnDef="7">
