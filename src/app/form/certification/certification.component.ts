@@ -174,7 +174,7 @@ export class CertificationComponent implements OnInit {
             'Bạn đã cập nhật chứng nhận thành công!',
             'success'
           ).then( result =>{
-            this.router.navigate(['list/businesshousehold']);
+            this.router.navigate(['list/detail/',this.id,this.index]);
           });
         }
       });

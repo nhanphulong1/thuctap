@@ -170,7 +170,7 @@
                 <button mat-button [matMenuTriggerFor]="menu" #menuTrigger>
                     <mat-icon>more_horiz</mat-icon>
                     <mat-menu #menu="matMenu">
-                        <a href="/" class="menu-a"><button mat-menu-item><mat-icon color="primary">remove_red_eye</mat-icon>Xem chi tiết</button></a>
+                        <a [routerLink]="['/list/transaction/'+ element._id]" routerLinkActive="router-link-active"  class="menu-a"><button mat-menu-item><mat-icon color="primary">remove_red_eye</mat-icon>Xem chi tiết</button></a>
                         <a href="/" class="menu-a"><button mat-menu-item><mat-icon color="primary">update</mat-icon>Thay đổi</button></a>
                         <a href="/" class="menu-a"><button mat-menu-item><mat-icon color="primary">restore</mat-icon>Xin cấp lại</button></a>
                         <a href="/" class="menu-a"><button mat-menu-item><mat-icon color="primary">pause_presentation</mat-icon>Xin tạm dừng</button></a>

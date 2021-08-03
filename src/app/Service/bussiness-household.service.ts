@@ -135,4 +135,11 @@ export class BussinessHouseholdService {
     .pipe(catchError(this.handleError));
   }
 
+  public deleteBussinessHouse(id): Observable<any>{
+    const url = this.REST_API_SERVER+'/'+id;
+    return this.httpClient
+    .delete<any>(url, this.httpOptions)
+    .pipe(catchError(this.handleError));
+  }
+
 }
