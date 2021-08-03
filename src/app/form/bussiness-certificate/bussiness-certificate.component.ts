@@ -61,6 +61,14 @@ export class BussinessCertificateComponent implements OnInit {
     this.formCertificate.controls['national'].setValue(this.data.representative.identityCard.national);
     this.formCertificate.controls['signer'].setValue(this.data.transactions[this.index].signer);
     this.formCertificate.controls['position'].setValue(this.data.transactions[this.index].position);
+    if(this.data?.transactions[this.index]?.businessCertificate){
+      this.formCertificate.controls['level'].setValue(''+this.data.transactions[this.index].businessCertificate.level);
+      this.formCertificate.controls['issuePlace'].setValue(this.data.transactions[this.index].businessCertificate.issuePlace);
+      this.formCertificate.controls['career'].setValue(this.data.transactions[this.index].businessCertificate.career);
+      this.formCertificate.controls['issueDate'].setValue(moment(this.data.transactions[this.index].businessCertificate.issueDate).format('YYYY-MM-DD'));
+      this.formCertificate.controls['startDate'].setValue(moment(this.data.transactions[this.index].businessCertificate.startDate).format('YYYY-MM-DD'));
+      this.formCertificate.controls['endDate'].setValue(moment(this.data.transactions[this.index].businessCertificate.endDate).format('YYYY-MM-DD'));
+    }
     this.formCertificate.controls['identityId'].setValue(this.data.representative.identityCard.id);
     this.formCertificate.controls['identityDate'].setValue(moment(this.data.representative.identityCard.issueDate).format('YYYY-MM-DD'));
   };
@@ -98,7 +106,7 @@ export class BussinessCertificateComponent implements OnInit {
             'Bạn đã cập nhật chứng chỉ hành nghề thành công!',
             'success'
           ).then( result =>{
-            this.router.navigate(['list/businesshousehold']);
+            this.router.navigate(['list/detail/',this.id,this.index]);
           });
         }
       });

@@ -53,6 +53,8 @@ import { CateCareerComponent } from './form/cate-career/cate-career.component';
 import { AddCatecareerComponent } from './form/add-catecareer/add-catecareer.component';
 import { AddAgencyComponent } from './form/add-agency/add-agency.component';
 import { BusinessAgencyComponent } from './form/business-agency/business-agency.component';
+import { TransactionComponent } from './list/transaction/transaction.component';
+import { DetailComponent } from './list/detail/detail.component';
 
 
 @NgModule({
@@ -82,6 +84,8 @@ import { BusinessAgencyComponent } from './form/business-agency/business-agency.
     AddCatecareerComponent,
     AddAgencyComponent,
     BusinessAgencyComponent,
+    TransactionComponent,
+    DetailComponent,
   ],
   entryComponents: [AddcareerComponent, AddCapitalComponent, AddCatecareerComponent, AddAgencyComponent],
   imports: [

@@ -101,7 +101,7 @@ export class HomeComponent implements OnInit{
       'name': this.formSignUp.value.name,
       'address': this.formSignUp.value.address+' - '+this.formSignUp.value.ward+' - '+this.formSignUp.value.province,
       'certificationNumber':this.certificationNumber,
-      'status': 1,
+      'status': 0,
       'phoneNumber': this.formSignUp.value.phone,
       'email':'',
       'fax':'',
@@ -121,7 +121,7 @@ export class HomeComponent implements OnInit{
         }
       },
       'transactions':[{
-        'name':'Đang hoạt động',
+        'name':'Thành lập mới hộ kinh doanh',
         'status': 0,
         'receptionDate': this.formSignUp.value.receptDate,
         'receptionPerson': this.formSignUp.value.receptPerson,

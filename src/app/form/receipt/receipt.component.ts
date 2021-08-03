@@ -31,7 +31,7 @@ export class ReceiptComponent implements OnInit {
     fax: '',
     email: '',
     website: '',
-    titles: ['',Validators.required],
+    titles: ['Giám đốc',Validators.required],
     content: ['',Validators.required],
     listProfile: ['',Validators.required],
     setlementDate: ['',Validators.required],
@@ -73,6 +73,18 @@ export class ReceiptComponent implements OnInit {
     this.formReceipt.controls['fax'].setValue(this.data.fax);
     this.formReceipt.controls['email'].setValue(this.data.email);
     this.formReceipt.controls['website'].setValue(this.data.website);
+    if(this.data?.transactions[this.index]?.receipt?.id){
+      this.formReceipt.controls['receiptNumber'].setValue(this.data?.transactions[this.index]?.receipt?.id);
+      this.formReceipt.controls['profileNumber'].setValue(this.data?.transactions[this.index]?.receipt?.profileNumber);
+      this.formReceipt.controls['content'].setValue(this.data?.transactions[this.index]?.receipt?.content);
+      this.formReceipt.controls['attestNumber'].setValue(this.data?.transactions[this.index]?.receipt?.attestNumber);
+      this.formReceipt.controls['receiptType'].setValue(this.data?.transactions[this.index]?.receipt?.receiptType);
+      let list = '';
+      this.data?.transactions[this.index]?.receipt?.listProfile.forEach(element => {
+        list = list + element +'\n';
+      });
+      this.formReceipt.controls['listProfile'].setValue(list.slice(0,list.length-1));
+    }
   };
 
   public getValueReceiptForm(){
@@ -87,7 +99,9 @@ export class ReceiptComponent implements OnInit {
       'receiptType': this.formReceipt.value.receiptType
     };
     this.data.transactions[this.index].submitPerson = this.formReceipt.value.submitName;
+    this.data.transactions[this.index].receiptDate = this.formReceipt.value.receiptDate;
     this.data.transactions[this.index].department = this.formReceipt.value.department;
+    this.data.transactions[this.index].submitPerson = this.formReceipt.value.submitPerson;
     this.data.transactions[this.index].issueUnit = this.formReceipt.value.issueUnit;
     this.data.address = this.formReceipt.value.address;
     this.data.phoneNumber = this.formReceipt.value.phone;
@@ -109,7 +123,7 @@ export class ReceiptComponent implements OnInit {
             'Bạn đã tạo giấy biên nhận thành công!',
             'success'
           ).then( result =>{
-            this.router.navigate(['list/businesshousehold']);
+            this.router.navigate(['list/detail/',this.id,this.index]);
           });
         }
       });

@@ -1,0 +1,197 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.material-icons{
+    font-family: 'Material Icons' !important;
+}
+
+.content{
+    background-color: white;
+    border: 1px solid rgba(211, 211, 211, 0.247);
+    margin: 15px;
+    position: relative;
+    padding: 10px 8px;
+}
+
+.content h2{
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.content .back{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    border: 1px solid black;
+    padding: 6px 8px;
+    font-size: 15px;
+    color: #000;
+    text-decoration: none;
+    font-weight: 400;
+}
+
+.content .back mat-icon{
+    font-size: 18px;
+    height: 18px;
+    width: 23px;
+}
+
+.btn-trans{
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.btn-trans a{
+    font-size: 13px;
+    margin-right: 8px;
+    padding: 0px 8px;
+}
+
+.btn-trans a mat-icon{
+    font-size: 17px;
+    height: 17px;
+    width: 17px;
+    margin-right: 4px;
+}
+
+.content h4{
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+// .info mat-grid-list mat-grid-tile{
+//     text-align: left!important;
+//     // padding-left: 10px;
+// }
+
+.border-left{
+    border-left: 1px solid black;
+}
+
+.border-right{
+    border-right: 1px solid black;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.red{
+    color: red;
+}
+
+.add-household{
+    background-color: #1565C0;
+    color: white;
+    border-radius: 5px;
+    width: 90px;
+}
+
+.add-household .icon{
+    font-size: 17px;
+}
+
+.add-household a{
+    position: relative;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    padding-top: 2px;
+    padding-right: 2px;
+    font-size: 12px;
+    line-height: 14px;
+}
+
+.status{
+    padding-top: 12px;
+}
+
+.status h5{
+    font-size: 13px;
+    color: black;
+}
+
+
+table {
+    width: 100%;
+}
+
+table th{
+    background-color: #D6E4FF;
+    color: #353535;
+    font-size: 15px;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    // border: 1px solid #353535;
+}
+
+table td{
+    background-color: #F0F8FF;
+    text-align: center;
+}
+
+.detail{
+    color: #1565C0;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.delete{
+    color: #F44336;
+    cursor: pointer;
+}
+
+// #stt {
+//     text-align: center !important;
+//     margin-right: 30px !important;
+// }
+
+#card_0{
+    padding: 4px 5px;
+    color: #1565C0;
+    border: 1px solid #1565C0;
+}
+
+#card_1{
+    padding: 4px 5px;
+    color: #198754;
+    border: 1px solid #198754;
+}
+
+#card_2{
+    padding: 4px 5px;
+    color: #FFC107;
+    border: 1px solid #FFC107;
+}
+
+#card_3{
+    padding: 4px 5px;
+    color: #DC3545;
+    border: 1px solid #DC3545;
+}
+
+#card_4{
+    padding: 4px 5px;
+    color: #fc0b23;
+    border: 1px solid #fc0b23;
+}
+
+.row-below-table{
+    float: right;
+}
+
+.row-below-table .icon{
+    font-size: 17px;
+}
+
+.menu-a{
+    text-decoration: none;
+}

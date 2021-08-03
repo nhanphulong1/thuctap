@@ -1,6 +1,6 @@
 <div class="content">
     <h2>THÊM CHỨNG CHỈ HÀNH NGHỀ</h2>
-    <a routerLink="/home" routerLinkActive="router-link-active"  class="back"><mat-icon>arrow_back</mat-icon>Quay lại</a>
+    <a routerLink="/list/detail/{{id+'/'+index}}" routerLinkActive="router-link-active"  class="back"><mat-icon>arrow_back</mat-icon>Quay lại</a>
 
     <form (ngSubmit)="onSubmit()" [formGroup]="formCertificate">
         <div class="formRow">
@@ -32,7 +32,7 @@
                 <mat-grid-tile class="listRight">
                     <mat-form-field appearance="outline" style="width: 40%">
                         <mat-label>Trình độ</mat-label>
-                        <mat-select required matInput formControlName="level">
+                        <mat-select required [(value)]="formCertificate.value.level" formControlName="level">
                             <mat-option value="0">THPT</mat-option>
                             <mat-option value="1">Trung cấp</mat-option>
                             <mat-option value="2">Cao đẳng</mat-option>
