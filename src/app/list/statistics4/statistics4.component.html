@@ -82,12 +82,12 @@
 
             <ng-container matColumnDef="5">
                 <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"> Vốn ĐK </th>
-                <td mat-cell *matCellDef="let element"> {{element?.transactions[1]?.certification?.businessCapital}} </td>
+                <td mat-cell *matCellDef="let element"> {{element?.transactions[0]?.certification?.businessCapital}} </td>
             </ng-container>
 
             <ng-container matColumnDef="6">
                 <th mat-header-cell *matHeaderCellDef [attr.rowspan]="2"> Ngành nghề </th>
-                <td mat-cell *matCellDef="let element"> {{element?.transactions[1]?.certification?.listCareer[0]?.name}} </td>
+                <td mat-cell *matCellDef="let element"> {{element?.transactions[0]?.certification?.listCareer[0]?.name}} </td>
             </ng-container>
 
             <ng-container matColumnDef="7">

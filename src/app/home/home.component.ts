@@ -137,8 +137,8 @@ export class HomeComponent implements OnInit{
         // 'supensionProfile':{},
       }],
       // 'businessAgency':[],
-      'createdDate': new Date(),
-      'updatedDate': new Date()
+      'createdDate': this.nowDate,
+      'updatedDate': this.nowDate
     };
   }
 

@@ -175,7 +175,7 @@
             </mat-tab-group>
         </div>
         <div class="btnAdd">
-            <button mat-raised-button color="primary" class="btnSubmit"><mat-icon>save</mat-icon> Lưu</button>
+            <button mat-raised-button color="primary" class="btnSubmit" [disabled]="data?.transactions[index]?.status == '1'"><mat-icon>save</mat-icon> Lưu</button>
             <button type="reset" mat-raised-button color="secondary" class="btnReset"><mat-icon>restart_alt</mat-icon> Làm mới</button>
         </div>
     </form>

@@ -7,7 +7,7 @@
         <li>
             <a (click)="showCate = !showCate"><mat-icon>list_alt</mat-icon>Danh mục<mat-icon class="{{ showCate ? 'expand  expand_active': 'expand' }}">expand_more</mat-icon></a>
             <ul *ngIf="showCate">
-                <li><a href="/list/businesshousehold"><mat-icon>view_list</mat-icon>Danh sách hộ kinh doanh</a></li>
+                <li><a routerLink="/list/businesshousehold" routerLinkActive="router-link-active"><mat-icon>view_list</mat-icon>Danh sách hộ kinh doanh</a></li>
             </ul>
             
         </li>
@@ -24,12 +24,12 @@
         <li>
             <a (click)="showReport = !showReport"><mat-icon>dashboard</mat-icon>Thống kê báo cáo<mat-icon class="{{ showReport ? 'expand  expand_active': 'expand' }}">expand_more</mat-icon></a>
             <ul *ngIf="showReport">
-                <li><a href="statistics/1"><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh thành lập mới</a></li>
-                <li><a href="statistics/2"><mat-icon>view_list</mat-icon>Tổng hợp chung hộ kinh doanh đăng ký</a></li>
-                <li><a href="statistics/3"><mat-icon>view_list</mat-icon>Thống kê hộ có vốn lớn trong năm</a></li>
-                <li><a href="statistics/4"><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh đăng ký thay đổi</a></li>
-                <li><a href="statistics/5"><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh theo ngành nghề</a></li>
-                <li><a href="statistics/6"><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh theo loại giao dịch</a></li>
+                <li><a routerLink="/statistics/1" routerLinkActive="router-link-active"><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh thành lập mới</a></li>
+                <li><a routerLink="/statistics/2" routerLinkActive="router-link-active"><mat-icon>view_list</mat-icon>Tổng hợp chung hộ kinh doanh đăng ký</a></li>
+                <li><a routerLink="/statistics/3" routerLinkActive="router-link-active"><mat-icon>view_list</mat-icon>Thống kê hộ có vốn lớn trong năm</a></li>
+                <li><a routerLink="/statistics/4" routerLinkActive="router-link-active"><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh đăng ký thay đổi</a></li>
+                <li><a routerLink="/statistics/5" routerLinkActive="router-link-active"><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh theo ngành nghề</a></li>
+                <li><a routerLink="/statistics/6" routerLinkActive="router-link-active"><mat-icon>view_list</mat-icon>Thống kê hộ kinh doanh theo loại giao dịch</a></li>
             </ul>
         </li>
     </ul>

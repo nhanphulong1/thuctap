@@ -1,0 +1,115 @@
+<div class="content">
+    <h2>THÊM GIẤY TẠM NGỪNG HOẠT ĐỘNG KINH DOANH</h2>
+    <a routerLink="/list/businesshousehold" routerLinkActive="router-link-active"  class="back"><mat-icon>arrow_back</mat-icon>Quay lại</a>
+    <form (ngSubmit)="onSubmit()" [formGroup]="formDelay">
+        <h4>1. Thông tin giao dịch</h4>
+        <div class="formRow">
+            <mat-grid-list cols='2' rowHeight='55px'>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ngày tiếp nhận</mat-label>
+                        <input type="date" matInput value="{{nowDate}}" formControlName="receptDate">
+                        <!-- <mat-error *ngIf="formDelay.invalid">ádasd</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile> <mat-form-field appearance="outline">
+                    <mat-label>Người lập hồ sơ</mat-label>
+                    <input type="text" matInput formControlName="receptPerson">
+                    <mat-error *ngIf="formDelay.get('receptPerson').hasError('required')">Vui lòng điền người lập!</mat-error>
+                </mat-form-field></mat-grid-tile>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Người nộp</mat-label>
+                        <input type="text" matInput formControlName="submitPerson">
+                        <mat-error *ngIf="formDelay.get('submitPerson').hasError('required')">Vui lòng điền người lập!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Số CMND/CCCD</mat-label>
+                        <input type="text" matInput formControlName="submitId">
+                        <mat-error *ngIf="formDelay.get('submitId').hasError('required')">Vui lòng điền số CMND/CCCD</mat-error>
+                        <mat-error *ngIf="!formDelay.get('submitId').hasError('required') && formDelay.get('submitId').hasError('pattern')">Vui lòng nhập đúng số CMND/CCCD!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Số điện thoại</mat-label>
+                        <input type="text" matInput formControlName="submitPhone">
+                        <mat-error  *ngIf="formDelay.get('submitPhone').hasError('pattern') && !formDelay.get('submitPhone').hasError('required')">Vui lòng nhập điền số điện thoại</mat-error>
+                        <mat-error  *ngIf="formDelay.get('submitPhone').hasError('required')">Vui lòng nhập đúng số điện thoại</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+        </div>
+        <h4>2. Nội dung giao dịch</h4>
+        <div class="formRow">
+            <mat-grid-list cols='2' rowHeight='55px'>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Tên hộ kinh doanh</mat-label>
+                        <input type="text" matInput formControlName="name">
+                        <mat-error *ngIf="formDelay.get('name').hasError('required')">Vui lòng nhập tên hộ kinh doanh!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+              
+                <mat-grid-tile colspan='2'>
+                    <mat-form-field appearance="outline" style="width: 100%">
+                        <mat-label>Số chứng nhận</mat-label>
+                        <input type="text" matInput formControlName="certificationNumber">
+                        <mat-error *ngIf="formDelay.get('certificationNumber').hasError('required')">Vui lòng nhập chứng nhận!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+                
+            </mat-grid-list>
+        </div>
+        <h4>3. Căn cứ thực hiện</h4>
+        <div class="formRow">
+            <mat-grid-list cols='2' rowHeight='55px'>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Số thông báo</mat-label>
+                        <input type="text" matInput formControlName="suspensionProfileID">
+                        <mat-error *ngIf="formDelay.get('name').hasError('required')">Vui lòng nhập tên hộ kinh doanh!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Ngày thông báo</mat-label>
+                        <input type="date" matInput value="{{nowDate}}" formControlName="settlementDate">
+                        <!-- <mat-error *ngIf="formDelay.invalid">ádasd</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Tạm ngưng từ</mat-label>
+                        <input type="date" matInput value="{{nowDate}}" formControlName="startDate">
+                        <!-- <mat-error *ngIf="formDelay.invalid">ádasd</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile class="listRight">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Kết thúc tạm ngưng đến</mat-label>
+                        <input type="date" matInput value="{{nowDate}}" formControlName="endDate">
+                        <!-- <mat-error *ngIf="formDelay.invalid">ádasd</mat-error> -->
+                    </mat-form-field>
+                </mat-grid-tile>
+                <mat-grid-tile colspan='2'>
+                    <mat-form-field appearance="outline" style="width: 100%">
+                        <mat-label>Nhập lí do xin tạm ngừng</mat-label>
+                        <input type="text" matInput formControlName="suspensionProfilecontent">
+                        <mat-error *ngIf="formDelay.get('suspensionProfilecontent').hasError('required')">Vui lòng nhập tên hộ kinh doanh!</mat-error>
+                    </mat-form-field>
+                </mat-grid-tile>
+            </mat-grid-list>
+         
+        </div>
+        
+        <div class="btnAdd">
+            <button mat-raised-button color="primary" class="btnSubmit"><mat-icon>save</mat-icon> Cập nhật</button>
+            <button type="reset" mat-raised-button color="secondary" class="btnReset"><mat-icon>restart_alt</mat-icon> Làm mới</button>
+            
+        </div>
+    </form>
+</div>

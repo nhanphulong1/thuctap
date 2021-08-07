@@ -90,9 +90,9 @@ export class CertificationComponent implements OnInit {
     this.formCertificate.controls['issueDate'].setValue(moment(this.data.createdDate).format('YYYY-MM-DD'));
     this.formCertificate.controls['issueUnit'].setValue(this.data.transactions[this.index].issueUnit);
     this.formCertificate.controls['department'].setValue(this.data.transactions[this.index].department);
-    if(this.data.status != 0){
-      this.formCertificate.controls['capital'].setValue(this.data.transactions[this.index]?.certification?.businessCapital);
-      this.formCertificate.controls['capitalChar'].setValue(this.data.transactions[this.index]?.certification?.businessCapitalChar);
+    if(this.data.transactions[0]?.certification?.businessCapital){
+      this.formCertificate.controls['capital'].setValue(this.data.transactions[0]?.certification?.businessCapital);
+      this.formCertificate.controls['capitalChar'].setValue(this.data.transactions[0]?.certification?.businessCapitalChar);
     }
     //điền dữ liệu vào người đại diện
     this.repres.setData(this.data);

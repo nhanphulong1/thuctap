@@ -65,6 +65,25 @@ export class DetailComponent implements OnInit {
     }
 
     //Có thể thêm kiểm tra khác
+    if(this.households?.transactions[this.index]?.changeProfile){
+      let data = {'name': 'Thay đổi thông tin hộ kinh doanh', 'string':'change'};
+      this.arr.push(data);
+    }
+
+    if(this.households?.transactions[this.index]?.suspensionProfile){
+      let data = {'name': 'Tạm ngưng hoạt động kinh doanh', 'string':'delay'};
+      this.arr.push(data);
+    }
+
+    if(this.households?.transactions[this.index]?.recallProfile){
+      let data = {'name': 'Thu hồi giấy phép kinh doanh', 'string':'recall'};
+      this.arr.push(data);
+    }
+
+    if(this.households?.transactions[this.index]?.dissolutionProfile){
+      let data = {'name': 'Giải thể hộ kinh doanh', 'string':'dissolution'};
+      this.arr.push(data);
+    }
 
     this.dataSource = new MatTableDataSource(this.arr);
     this.dataSource.paginator = this.paginator;
@@ -73,6 +92,9 @@ export class DetailComponent implements OnInit {
 
   onComplete(){
     this.households.transactions[this.index].status = 1;
+    if(this.index==0){
+      this.households.status = 1;
+    }
     this.businessService.putBussinessHouse(this.households,this.id).subscribe( result => {
       Swal.fire(
         'Thành công!',

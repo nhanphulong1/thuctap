@@ -1,11 +1,11 @@
 <div class="content">
-    <h2>CHI TIẾT HỒ SƠ</h2> <!-- Trạng thái hồ sơ -->
+    <h2>CHI TIẾT CẬP NHẬT HỒ SƠ</h2> <!-- Trạng thái hồ sơ -->
     <a routerLink="/list/transaction/{{id}}" routerLinkActive="router-link-active"  class="back"><mat-icon>arrow_back</mat-icon>Quay lại</a>
     <div class="btn-trans">
         <a mat-raised-button color="primary" routerLink="/receipt/{{id+'/'+index}}" [disabled]="households?.transactions[index].status == 1"><mat-icon>receipt</mat-icon>Thêm biên nhận</a>
         <a mat-raised-button color="primary" routerLink="/certification/{{id+'/'+index}}" [disabled]="households?.transactions[index].status == 1"><mat-icon>note_add</mat-icon>Thêm giấy chứng nhận</a>
         <a mat-raised-button color="primary" routerLink="/certificate/{{id+'/'+index}}" [disabled]="households?.transactions[index].status == 1"><mat-icon>rule_folder</mat-icon>Thêm chứng chỉ</a>
-        <a mat-raised-button color="primary" (click)="onComplete()"><mat-icon>mark_email_read</mat-icon>Hoàn thành hồ sơ</a>
+        <a mat-raised-button color="primary" (click)="onComplete()" [disabled]="households?.transactions[index].status == 1"><mat-icon>mark_email_read</mat-icon>Hoàn thành hồ sơ</a>
         <a mat-raised-button color="primary" (click)="onDeleteTrans()"><mat-icon>delete_sweep</mat-icon>Xóa hồ sơ</a>
     </div>
     <h4>Thông tin chung</h4>
@@ -49,7 +49,7 @@
           <!-- Number Column -->
           <ng-container matColumnDef="number">
             <th mat-header-cell *matHeaderCellDef> Hành động </th>
-            <td mat-cell *matCellDef="let element"> <mat-icon class="detail" (click)="onClick(element.string)">visibility</mat-icon> <mat-icon class="delete" (click)="onDelete(element.string)">delete_outline</mat-icon></td>
+            <td mat-cell *matCellDef="let element"> <mat-icon class="detail" (click)="onClick(element.string)" >visibility</mat-icon> <mat-icon class="delete" (click)="onDelete(element.string)"  *ngIf="households?.transactions[index]?.status == 0">delete_outline</mat-icon></td>
           </ng-container>
       
           <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

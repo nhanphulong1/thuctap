@@ -4,7 +4,7 @@
     <div class="btn-trans">
         <a mat-raised-button color="primary"><mat-icon>text_snippet</mat-icon>Thay đổi</a>
         <a mat-raised-button color="primary"><mat-icon>restore_page</mat-icon>Xin cấp lại</a>
-        <a mat-raised-button color="primary"><mat-icon>rule_folder</mat-icon>Xin tạm ngừng</a>
+        <a mat-raised-button color="primary" [routerLink]="['/delay/'+ households?._id]" routerLinkActive="router-link-active" ><mat-icon>rule_folder</mat-icon>Xin tạm ngừng</a>
         <a mat-raised-button color="primary"><mat-icon>drive_file_move_rtl</mat-icon>Thu hồi</a>
         <a mat-raised-button color="primary"><mat-icon>folder_special</mat-icon>Giải thể</a>
     </div>

@@ -93,12 +93,12 @@ export class Statistics4Component implements OnInit {
       this.persons.push('Tất cả');
       this.position.push('Tất cả');
       this.arr.forEach(element => {
-        if((this.households[element]?.transactions[1]?.signer)!=(this.persons[this.j])){
-          this.persons[this.j+1] = this.households[element]?.transactions[1]?.signer;
+        if((this.households[element]?.transactions[0]?.signer)!=(this.persons[this.j])){
+          this.persons[this.j+1] = this.households[element]?.transactions[0]?.signer;
           this.j++;
         }
-        if((this.households[element]?.transactions[1]?.position)!=(this.position[this.k])){
-          this.position[this.k+1] = this.households[element]?.transactions[1]?.position;
+        if((this.households[element]?.transactions[0]?.position)!=(this.position[this.k])){
+          this.position[this.k+1] = this.households[element]?.transactions[0]?.position;
           this.k++;
         }
         if((new Date(this.households[element]?.createdDate).getFullYear())!=(this.year[this.l])){
@@ -199,14 +199,14 @@ export class Statistics4Component implements OnInit {
             if (data.year=='Tất cả'){
               if (data.month=='Tất cả'){
                 //1011
-                if (data.signer==new String(this.households[element]?.transactions[1]?.signer)){
+                if (data.signer==new String(this.households[element]?.transactions[0]?.signer)){
                   this.business[this.j] = this.households[element];
                   this.j++;
                 }
               }
               else{
                 //1010
-                if ((data.month==new String(new Date(this.households[element]?.createdDate).getMonth()+1))&&(data.signer==new String(this.households[element]?.transactions[1]?.signer))){
+                if ((data.month==new String(new Date(this.households[element]?.createdDate).getMonth()+1))&&(data.signer==new String(this.households[element]?.transactions[0]?.signer))){
                   this.business[this.j] = this.households[element];
                   this.j++;
                 }
@@ -215,14 +215,14 @@ export class Statistics4Component implements OnInit {
             else{
               if (data.month=='Tất cả'){
                 //1001
-                if ((data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))&&(data.signer==new String(this.households[element]?.transactions[1]?.signer))){
+                if ((data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))&&(data.signer==new String(this.households[element]?.transactions[0]?.signer))){
                   this.business[this.j] = this.households[element];
                   this.j++;
                 }
               }
               else{
                 //1000
-                if ((data.month==new String(new Date(this.households[element]?.createdDate).getMonth()+1))&&(data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))&&(data.signer==new String(this.households[element]?.transactions[1]?.signer))){
+                if ((data.month==new String(new Date(this.households[element]?.createdDate).getMonth()+1))&&(data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))&&(data.signer==new String(this.households[element]?.transactions[0]?.signer))){
                   this.business[this.j] = this.households[element];
                   this.j++;
                 }
@@ -235,14 +235,14 @@ export class Statistics4Component implements OnInit {
             if (data.year=='Tất cả'){
               if (data.month=='Tất cả'){
                 //0111
-                if (data.position==new String(this.households[element]?.transactions[1]?.position)){
+                if (data.position==new String(this.households[element]?.transactions[0]?.position)){
                   this.business[this.j] = this.households[element];
                   this.j++;
                 }
               }
               else{
                 //0110
-                if ((data.month==new String(new Date(this.households[element]?.createdDate).getMonth()+1))&&(data.position==new String(this.households[element]?.transactions[1]?.position))){
+                if ((data.month==new String(new Date(this.households[element]?.createdDate).getMonth()+1))&&(data.position==new String(this.households[element]?.transactions[0]?.position))){
                   this.business[this.j] = this.households[element];
                   this.j++;
                 }
@@ -251,14 +251,14 @@ export class Statistics4Component implements OnInit {
             else{
               if (data.month=='Tất cả'){
                 //0101
-                if ((data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))&&(data.position==new String(this.households[element]?.transactions[1]?.position))){
+                if ((data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))&&(data.position==new String(this.households[element]?.transactions[0]?.position))){
                   this.business[this.j] = this.households[element];
                   this.j++;
                 }
               }
               else{
                 //0100
-                if ((data.month==new String(new Date(this.households[element]?.createdDate).getMonth()+1))&&(data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))&&(data.position==new String(this.households[element]?.transactions[1]?.position))){
+                if ((data.month==new String(new Date(this.households[element]?.createdDate).getMonth()+1))&&(data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))&&(data.position==new String(this.households[element]?.transactions[0]?.position))){
                   this.business[this.j] = this.households[element];
                   this.j++;
                 }
@@ -269,14 +269,14 @@ export class Statistics4Component implements OnInit {
             if (data.year=='Tất cả'){
               if (data.month=='Tất cả'){
                 //0011
-                if ((data.signer==new String(this.households[element]?.transactions[1]?.signer))&&(data.position==new String(this.households[element]?.transactions[1]?.position))){
+                if ((data.signer==new String(this.households[element]?.transactions[0]?.signer))&&(data.position==new String(this.households[element]?.transactions[0]?.position))){
                   this.business[this.j] = this.households[element];
                   this.j++;
                 }
               }
               else{
                 //0010
-                if ((data.month==new String(new Date(this.households[element]?.createdDate).getMonth()+1))&&(data.signer==new String(this.households[element]?.transactions[1]?.signer))&&(data.position==new String(this.households[element]?.transactions[1]?.position))){
+                if ((data.month==new String(new Date(this.households[element]?.createdDate).getMonth()+1))&&(data.signer==new String(this.households[element]?.transactions[0]?.signer))&&(data.position==new String(this.households[element]?.transactions[0]?.position))){
                   this.business[this.j] = this.households[element];
                   this.j++;
                 }
@@ -285,14 +285,14 @@ export class Statistics4Component implements OnInit {
             else{
               if (data.month=='Tất cả'){
                 //0001
-                if ((data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))&&(data.signer==new String(this.households[element]?.transactions[1]?.signer))&&(data.position==new String(this.households[element]?.transactions[1]?.position))){
+                if ((data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))&&(data.signer==new String(this.households[element]?.transactions[0]?.signer))&&(data.position==new String(this.households[element]?.transactions[0]?.position))){
                   this.business[this.j] = this.households[element];
                   this.j++;
                 }
               }
               else{
                 //0000
-                if ((data.month==new String(new Date(this.households[element]?.createdDate).getMonth()+1))&&(data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))&&(data.signer==new String(this.households[element]?.transactions[1]?.signer))&&(data.position==new String(this.households[element]?.transactions[1]?.position))){
+                if ((data.month==new String(new Date(this.households[element]?.createdDate).getMonth()+1))&&(data.year==new String(new Date(this.households[element]?.createdDate).getFullYear()))&&(data.signer==new String(this.households[element]?.transactions[0]?.signer))&&(data.position==new String(this.households[element]?.transactions[0]?.position))){
                   this.business[this.j] = this.households[element];
                   this.j++;
                 }
@@ -316,8 +316,8 @@ export class Statistics4Component implements OnInit {
             name: element?.name,
             number: element?.certificationNumber,
             date: new Date(element?.createdDate).getDate()+'/'+new Date(element?.createdDate).getMonth()+'/'+new Date(element?.createdDate).getFullYear(),
-            capital: element?.transactions[1]?.certification?.businessCapital,
-            carrer: element?.transactions[1]?.certification?.listCareer[0]?.name,
+            capital: element?.transactions[0]?.certification?.businessCapital,
+            carrer: element?.transactions[0]?.certification?.listCareer[0]?.name,
             address: element?.address,
             person: element?.representative.name,
             birtday: new Date(element?.representative?.identityCard?.birthday).getDate()+'/'+new Date(element?.representative?.identityCard?.birthday).getMonth()+'/'+new Date(element?.representative?.identityCard?.birthday).getFullYear(),
